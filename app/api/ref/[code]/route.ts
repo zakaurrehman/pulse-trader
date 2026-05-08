@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(req: NextRequest, { params }: { params: { code: string } }) {
-  const { code } = params;
+export async function GET(req: NextRequest, { params }: { params: Promise<{ code: string }> }) {
+  const { code } = await params;
 
   const affiliate = await prisma.user.findUnique({
     where: { referralCode: code, status: "APPROVED" },
