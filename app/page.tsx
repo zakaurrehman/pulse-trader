@@ -196,7 +196,7 @@ export default function LandingPage() {
             <Link href="/register" className="text-slate-400 hover:text-white text-sm transition-colors">Register</Link>
             <Link href="/login" className="text-slate-400 hover:text-white text-sm transition-colors">Login</Link>
           </div>
-          <p className="text-slate-500 text-sm">© 2025 The Pulse Traders</p>
+          <p className="text-slate-500 text-sm">© 2026 The Pulse Traders</p>
         </div>
       </footer>
     </div>
