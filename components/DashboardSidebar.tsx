@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
+import Logo from "@/components/Logo";
 
 const links = [
   { href: "/dashboard", label: "Overview", icon: "📊" },
@@ -20,11 +21,8 @@ export default function DashboardSidebar({ name }: { name?: string | null }) {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="p-5 border-b border-slate-800 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
-            <span className="text-slate-900 font-black text-sm">PT</span>
-          </div>
-          <span className="text-white font-bold text-sm leading-tight">The Pulse Traders</span>
+        <Link href="/" onClick={() => setOpen(false)}>
+          <Logo height={38} />
         </Link>
         <button
           onClick={() => setOpen(false)}
@@ -79,12 +77,7 @@ export default function DashboardSidebar({ name }: { name?: string | null }) {
     <>
       {/* Mobile top bar */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-slate-900 h-14 flex items-center justify-between px-4 shadow-lg">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-amber-500 rounded-full flex items-center justify-center">
-            <span className="text-slate-900 font-black text-xs">PT</span>
-          </div>
-          <span className="text-white font-bold text-sm">The Pulse Traders</span>
-        </div>
+        <Logo height={30} />
         <button
           onClick={() => setOpen(true)}
           className="text-slate-300 hover:text-white p-2"

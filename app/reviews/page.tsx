@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
 import { StarRating, StarPicker } from "@/components/StarRating";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 interface Review {
   id: string;
@@ -30,7 +31,7 @@ export default function ReviewsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault();
     setError("");
     if (form.rating === 0) {
@@ -62,11 +63,8 @@ export default function ReviewsPage() {
       {/* Navbar */}
       <nav className="bg-slate-900 sticky top-0 z-50 shadow-lg">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
-              <span className="text-slate-900 font-black text-sm">PT</span>
-            </div>
-            <span className="text-white font-bold">The Pulse Traders</span>
+          <Link href="/">
+            <Logo height={38} />
           </Link>
           <Link href="/register" className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
             Join Affiliate Program

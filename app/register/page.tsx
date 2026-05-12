@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const PAYMENT_METHODS = [
   "Bank Transfer",
@@ -34,7 +35,7 @@ export default function RegisterPage() {
     setForm((f) => ({ ...f, [field]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault();
     setError("");
 
@@ -92,11 +93,8 @@ export default function RegisterPage() {
       <div className="max-w-2xl mx-auto">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center">
-              <span className="text-slate-900 font-black">PT</span>
-            </div>
-            <span className="text-white font-bold text-xl">The Pulse Traders</span>
+          <Link href="/" className="inline-block">
+            <Logo height={52} />
           </Link>
           <p className="text-slate-400 mt-3 text-sm">Join the Affiliate Program</p>
         </div>

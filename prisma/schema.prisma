@@ -31,6 +31,12 @@ enum ReviewStatus {
   REJECTED
 }
 
+enum PaymentRequestStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+}
+
 model User {
   id            String        @id @default(cuid())
   fullName      String
@@ -99,4 +105,30 @@ model Review {
   imageUrl   String?
   status     ReviewStatus @default(PENDING)
   createdAt  DateTime     @default(now())
+}
+
+model PaymentRequest {
+  id           String               @id @default(cuid())
+  clientName   String
+  clientEmail  String
+  phone        String?
+  country      String?
+  service      String
+  amount       Float
+  referralCode String?
+  paymentNote  String?
+  status       PaymentRequestStatus @default(PENDING)
+  rejectedNote String?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+}
+
+model SignalStat {
+  id           String   @id @default(cuid())
+  pair         String   @unique
+  winRate      Float
+  totalSignals Int
+  profitPips   String
+  barValues    String   @default("80,75,70,75,80,75,70")
+  updatedAt    DateTime @updatedAt
 }
