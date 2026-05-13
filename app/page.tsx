@@ -34,18 +34,19 @@ export default async function LandingPage() {
           <div className="flex items-center justify-between h-16">
             <Logo height={42} />
             <div className="hidden md:flex items-center gap-6">
-              <a href="#home" className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors">Home</a>
-              <a href="#about" className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors">About</a>
-              <a href="#services" className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors">Services</a>
-              <a href="#faq" className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors">FAQ</a>
-              <a href="#contact" className="text-slate-300 hover:text-amber-400 text-sm font-medium transition-colors">Contact</a>
+              <a href="#home" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">Home</a>
+              <a href="#courses" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">Courses</a>
+              <a href="#about" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">About</a>
+              <a href="#testimonials" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">Testimonials</a>
+              <a href="#faq" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">FAQ</a>
+              <a href="#contact" className="text-slate-300 hover:text-yellow-400 text-sm font-medium transition-colors">Contact</a>
             </div>
             <div className="flex items-center gap-3">
               <Link href="/login" className="text-slate-300 hover:text-white text-sm font-medium transition-colors hidden sm:block">
                 Login
               </Link>
-              <Link href="/register" className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
-                Get Started
+              <Link href="/order" className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
+                Enroll Now
               </Link>
             </div>
           </div>
@@ -55,37 +56,37 @@ export default async function LandingPage() {
       {/* Hero */}
       <section id="home" className="bg-slate-900 text-white py-24 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-            Affiliate Program — Now Open
+          <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+            Professional Trading Course &nbsp;·&nbsp; Enrollment Open
           </div>
           <h1 className="text-5xl sm:text-6xl font-black leading-tight mb-6">
-            Earn <span className="text-amber-400">50% Commission</span>
-            <br />on Every Sale You Refer
+            Learn Professional Trading<br />
+            <span className="text-yellow-400">From Scratch</span>
           </h1>
           <p className="text-slate-300 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Partner with The Pulse Traders and build a strong source of passive income online.
-            Share your unique referral link and earn half of every successful purchase.
+            Learn practical trading strategies, risk management, psychology, and live market analysis
+            through structured mentorship and real-world lessons.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/register" className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-black text-lg px-8 py-4 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
-              Register as an Affiliate
+            <Link href="/order" className="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-black text-lg px-8 py-4 rounded-xl transition-all shadow-lg hover:-translate-y-0.5">
+              Enroll Now
             </Link>
-            <a href="#services" className="text-slate-300 hover:text-white border border-slate-600 hover:border-amber-500/50 font-semibold text-lg px-8 py-4 rounded-xl transition-all">
-              View Our Services
+            <a href="#courses" className="text-slate-300 hover:text-white border border-slate-600 hover:border-yellow-500/50 font-semibold text-lg px-8 py-4 rounded-xl transition-all">
+              View Curriculum
             </a>
           </div>
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="bg-amber-500 py-8 px-4">
+      {/* Trust Strip */}
+      <section className="bg-yellow-500 py-8 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           {[
-            { value: "50%", label: "Commission Rate" },
-            { value: "Unique", label: "Referral Link" },
-            { value: "Live", label: "Dashboard Access" },
-            { value: "Unlimited", label: "Earning Potential" },
+            { value: "500+", label: "Students Trained" },
+            { value: "6", label: "Professional Courses" },
+            { value: "Live", label: "Mentorship Sessions" },
+            { value: "Lifetime", label: "Course Access" },
           ].map((s) => (
             <div key={s.label}>
               <div className="text-slate-900 font-black text-2xl">{s.value}</div>
@@ -99,21 +100,22 @@ export default async function LandingPage() {
       <section id="about" className="py-20 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
               How It Works
             </div>
-            <h2 className="text-4xl font-black text-slate-900 mb-3">Start Earning in 4 Simple Steps</h2>
-            <p className="text-slate-500 text-lg">No experience needed — just share and earn</p>
+            <h2 className="text-4xl font-black text-slate-900 mb-3">Start Learning in 4 Simple Steps</h2>
+            <p className="text-slate-500 text-lg">No experience needed — just choose a course and begin learning</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { step: "01", title: "Register", desc: "Fill in the affiliate registration form with your details." },
-              { step: "02", title: "Get Your Link", desc: "Receive your unique referral link after account approval." },
-              { step: "03", title: "Share", desc: "Share your link with your audience, clients, or social followers." },
-              { step: "04", title: "Earn 50%", desc: "Earn 50% commission on every successful purchase through your link." },
+              { step: "📚", num: "01", title: "Browse Courses", desc: "Explore all available trading courses and choose the one that fits your learning goals." },
+              { step: "🔍", num: "02", title: "Select Course", desc: "Open the course details to check syllabus, level, and what you will learn." },
+              { step: "💳", num: "03", title: "Buy & Enroll", desc: "Click the Enroll button and complete payment to get instant access." },
+              { step: "🎓", num: "04", title: "Start Learning", desc: "Get access to the course and start learning at your own pace with mentor support." },
             ].map((item) => (
-              <div key={item.step} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="text-amber-500 font-black text-4xl mb-3">{item.step}</div>
+              <div key={item.num} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                <div className="text-3xl mb-2">{item.step}</div>
+                <div className="text-yellow-500 font-black text-2xl mb-2">{item.num}</div>
                 <h3 className="text-slate-900 font-bold text-lg mb-2">{item.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
@@ -122,16 +124,16 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Services / Pricing */}
-      <section id="services" className="py-20 px-4 bg-slate-900">
+      {/* Courses / Pricing */}
+      <section id="courses" className="py-20 px-4 bg-slate-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
-              Our Services
+            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+              Our Courses
             </div>
-            <h2 className="text-4xl font-black text-white mb-3">Choose Your Trading Package</h2>
+            <h2 className="text-4xl font-black text-white mb-3">Choose Your Learning Path</h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Select the plan that fits your trading journey. All packages include access to our expert community and resources.
+              Every course is built around real market experience. Pick the level that matches your goals and start today.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -144,8 +146,8 @@ export default async function LandingPage() {
                 badge: null,
                 popular: false,
                 disabled: false,
-                features: ["Forex fundamentals course", "Chart reading basics", "Risk management guide", "Community access", "Email support"],
-                cta: "Get Started",
+                features: ["Forex fundamentals", "Chart reading basics", "Risk management guide", "Community access", "Email support"],
+                cta: "Enroll Now",
               },
               {
                 name: "Advanced Trading Strategies",
@@ -155,8 +157,8 @@ export default async function LandingPage() {
                 badge: "Most Popular",
                 popular: true,
                 disabled: false,
-                features: ["All Basic features", "Advanced technical analysis", "Entry & exit strategies", "Weekly live sessions", "Priority support", "Strategy playbooks"],
-                cta: "Get Started",
+                features: ["All Basic content", "Advanced technical analysis", "Entry & exit strategies", "Weekly live sessions", "Priority support", "Strategy playbooks"],
+                cta: "Enroll Now",
               },
               {
                 name: "Mastery Bundle",
@@ -166,8 +168,8 @@ export default async function LandingPage() {
                 badge: "Best Value",
                 popular: false,
                 disabled: false,
-                features: ["All Advanced features", "Full course library access", "Exclusive masterclasses", "Trade review sessions", "Lifetime updates", "1-on-1 onboarding call"],
-                cta: "Get Started",
+                features: ["Full course library", "Exclusive masterclasses", "Trade review sessions", "Lifetime updates", "1-on-1 onboarding call"],
+                cta: "Enroll Now",
               },
               {
                 name: "Premium Signals",
@@ -188,7 +190,7 @@ export default async function LandingPage() {
                 badge: null,
                 popular: false,
                 disabled: false,
-                features: ["All Mastery Bundle features", "4 private mentorship calls", "Personalized trade plan", "Psychology coaching", "Direct mentor access", "Portfolio review"],
+                features: ["Full Mastery Bundle", "4 private mentorship calls", "Personalized trade plan", "Psychology coaching", "Direct mentor access"],
                 cta: "Apply Now",
               },
               {
@@ -207,19 +209,19 @@ export default async function LandingPage() {
                 key={pkg.name}
                 className={`relative rounded-2xl p-6 flex flex-col border transition-all hover:-translate-y-1 ${
                   pkg.popular
-                    ? "bg-amber-500 border-amber-400 shadow-2xl shadow-amber-500/20"
+                    ? "bg-yellow-500 border-yellow-400 shadow-2xl shadow-yellow-500/20"
                     : pkg.disabled
                     ? "bg-slate-800/50 border-slate-700/50 opacity-75"
-                    : "bg-slate-800 border-slate-700 hover:border-amber-500/30"
+                    : "bg-slate-800 border-slate-700 hover:border-yellow-500/30"
                 }`}
               >
                 {pkg.badge && (
                   <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-black px-3 py-1 rounded-full whitespace-nowrap ${
                     pkg.popular
-                      ? "bg-slate-900 text-amber-400"
+                      ? "bg-slate-900 text-yellow-400"
                       : pkg.disabled
                       ? "bg-slate-700 text-slate-300"
-                      : "bg-amber-500 text-slate-900"
+                      : "bg-yellow-500 text-slate-900"
                   }`}>
                     {pkg.badge}
                   </div>
@@ -231,13 +233,13 @@ export default async function LandingPage() {
                       <span className={`text-sm line-through ${pkg.popular ? "text-slate-700" : "text-slate-500"}`}>{pkg.original}</span>
                     )}
                     {pkg.original && (
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-amber-500/20 text-amber-400"}`}>
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-yellow-500/20 text-yellow-400"}`}>
                         20% OFF
                       </span>
                     )}
                   </div>
                   <div className="mt-1">
-                    <span className={`text-3xl font-black ${pkg.popular ? "text-slate-900" : pkg.disabled ? "text-slate-400" : "text-amber-400"}`}>
+                    <span className={`text-3xl font-black ${pkg.popular ? "text-slate-900" : pkg.disabled ? "text-slate-400" : "text-yellow-400"}`}>
                       {pkg.price}
                     </span>
                     <span className={`text-sm ml-1 ${pkg.popular ? "text-slate-800" : "text-slate-500"}`}>/{pkg.period}</span>
@@ -247,7 +249,7 @@ export default async function LandingPage() {
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
                       <span className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold ${
-                        pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-amber-500/20 text-amber-400"
+                        pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-yellow-500/20 text-yellow-400"
                       }`}>✓</span>
                       <span className={`text-sm ${pkg.popular ? "text-slate-800" : "text-slate-400"}`}>{f}</span>
                     </li>
@@ -260,7 +262,7 @@ export default async function LandingPage() {
                       ? "bg-slate-900 hover:bg-slate-800 text-white"
                       : pkg.disabled
                       ? "bg-slate-700/50 text-slate-500 cursor-not-allowed pointer-events-none"
-                      : "bg-amber-500 hover:bg-amber-400 text-slate-900"
+                      : "bg-yellow-500 hover:bg-yellow-400 text-slate-900"
                   }`}
                 >
                   {pkg.cta}
@@ -271,7 +273,7 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Live Signal Performance — data from DB */}
+      {/* Live Signal Performance */}
       <section className="py-20 px-4 bg-slate-800">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -284,11 +286,11 @@ export default async function LandingPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {signalStats.map((stat) => (
-              <div key={stat.pair} className="bg-slate-900 rounded-2xl p-5 border border-slate-700 hover:border-amber-500/30 transition-all">
+              <div key={stat.pair} className="bg-slate-900 rounded-2xl p-5 border border-slate-700 hover:border-yellow-500/30 transition-all">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-white font-black text-lg">{stat.pair}</span>
                   <span className={`text-xs font-bold px-2 py-1 rounded-full ${
-                    stat.winRate >= 90 ? "bg-green-500/20 text-green-400" : "bg-amber-500/20 text-amber-400"
+                    stat.winRate >= 90 ? "bg-green-500/20 text-green-400" : "bg-yellow-500/20 text-yellow-400"
                   }`}>
                     {stat.winRate}% win
                   </span>
@@ -300,7 +302,7 @@ export default async function LandingPage() {
                   </div>
                   <div className="w-full bg-slate-700 rounded-full h-2">
                     <div
-                      className="h-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-400"
+                      className="h-2 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400"
                       style={{ width: `${stat.winRate}%` }}
                     />
                   </div>
@@ -321,7 +323,7 @@ export default async function LandingPage() {
                     {stat.bars.map((h, i) => (
                       <div
                         key={i}
-                        className="flex-1 bg-amber-500/60 rounded-sm hover:bg-amber-500 transition-colors"
+                        className="flex-1 bg-yellow-500/60 rounded-sm hover:bg-yellow-500 transition-colors"
                         style={{ height: `${h}%` }}
                       />
                     ))}
@@ -333,30 +335,30 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Dashboard preview */}
+      {/* Student Dashboard Preview */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
-                Affiliate Dashboard
+              <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+                Student Dashboard
               </div>
-              <h2 className="text-4xl font-black text-slate-900 mb-4">Your Personal Affiliate Dashboard</h2>
+              <h2 className="text-4xl font-black text-slate-900 mb-4">Your Personal Learning Dashboard</h2>
               <p className="text-slate-500 text-lg mb-8 leading-relaxed">
-                Once approved, get instant access to a professional dashboard to monitor everything in real time.
+                Access your dashboard to track your learning progress and manage your enrolled courses in real time.
               </p>
               <ul className="space-y-3">
                 {[
-                  "Total Sales Generated",
-                  "Earned Commissions",
-                  "Available Commission Balance",
-                  "Withdrawn Commissions",
-                  "My Clients & Their Purchases",
-                  "Referral Performance Tracking",
+                  "My Enrolled Courses",
+                  "Learning Progress Tracker",
+                  "Completed Lessons & Topics",
+                  "Saved Courses for Later",
+                  "Live Session Schedule",
+                  "Account & Profile Settings",
                 ].map((f) => (
                   <li key={f} className="flex items-center gap-3 text-slate-700">
-                    <span className="w-5 h-5 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-amber-600 text-xs font-bold">✓</span>
+                    <span className="w-5 h-5 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-yellow-600 text-xs font-bold">✓</span>
                     </span>
                     {f}
                   </li>
@@ -364,27 +366,39 @@ export default async function LandingPage() {
               </ul>
             </div>
             <div className="bg-slate-900 rounded-2xl p-6 shadow-2xl">
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-white font-bold text-sm">My Learning</p>
+                <span className="text-xs text-yellow-400 font-semibold bg-yellow-500/10 px-2 py-1 rounded-full">3 Active</span>
+              </div>
+              <div className="space-y-3 mb-5">
                 {[
-                  { label: "Total Sales", value: "$4,200" },
-                  { label: "Earned", value: "$2,100" },
-                  { label: "Available", value: "$850" },
-                  { label: "Withdrawn", value: "$1,250" },
-                ].map((card) => (
-                  <div key={card.label} className="bg-slate-800 rounded-xl p-4">
-                    <div className="text-slate-400 text-xs mb-1">{card.label}</div>
-                    <div className="text-amber-400 font-black text-xl">{card.value}</div>
+                  { name: "Advanced Trading Strategies", progress: 68 },
+                  { name: "Premium Signals", progress: 100 },
+                  { name: "Basic Training", progress: 100 },
+                ].map((c) => (
+                  <div key={c.name} className="bg-slate-800 rounded-xl p-3">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-slate-300 text-xs font-medium truncate mr-2">{c.name}</span>
+                      <span className="text-yellow-400 text-xs font-bold flex-shrink-0">{c.progress}%</span>
+                    </div>
+                    <div className="w-full bg-slate-700 rounded-full h-1.5">
+                      <div
+                        className="h-1.5 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400"
+                        style={{ width: `${c.progress}%` }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
               <div className="bg-slate-800 rounded-xl p-4">
-                <div className="text-slate-400 text-xs mb-2">Recent Clients</div>
-                {["Ahmed K. — $300 sale", "Sara M. — $150 sale", "John P. — $450 sale"].map((c) => (
-                  <div key={c} className="flex items-center justify-between py-2 border-b border-slate-700 last:border-0">
-                    <span className="text-slate-300 text-sm">{c}</span>
-                    <span className="text-green-400 text-xs font-bold">+50%</span>
+                <div className="text-slate-400 text-xs mb-2">Next Live Session</div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-white text-sm font-bold">XAU/USD Live Analysis</p>
+                    <p className="text-slate-400 text-xs mt-0.5">Today · 8:00 PM PKT</p>
                   </div>
-                ))}
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                </div>
               </div>
             </div>
           </div>
@@ -395,23 +409,23 @@ export default async function LandingPage() {
       <section className="py-20 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
               Why Choose Us
             </div>
-            <h2 className="text-4xl font-black text-slate-900 mb-3">Built for Serious Traders &amp; Affiliates</h2>
-            <p className="text-slate-500 text-lg">What sets The Pulse Traders apart from the rest</p>
+            <h2 className="text-4xl font-black text-slate-900 mb-3">Built for Serious Traders</h2>
+            <p className="text-slate-500 text-lg">What sets The Pulse Traders apart from every other course</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: "🏆", title: "Experienced Team", desc: "Our mentors have years of live trading experience across forex, commodities, and indices — not just theoretical knowledge." },
-              { icon: "🎯", title: "Practical Teaching", desc: "We focus on real-world trade setups you can execute immediately, not just concepts you have to figure out on your own." },
-              { icon: "🧭", title: "Independent Focus", desc: "We teach you to trade independently and read the market yourself — no lifelong dependency on signals." },
-              { icon: "📐", title: "Professional Approach", desc: "Structured curriculum, disciplined risk management, and consistent strategy — built the professional way." },
-              { icon: "🌱", title: "Beginner Friendly", desc: "Start from zero. Our step-by-step foundation courses are designed for complete beginners with no prior experience." },
-              { icon: "💰", title: "High Commission Rate", desc: "Earn 50% on every sale you refer — one of the most generous affiliate structures in the trading education space." },
+              { icon: "🏆", title: "Experienced Mentors", desc: "Our mentors have years of live trading experience across forex, commodities, and indices — not just theory." },
+              { icon: "🎯", title: "Practical Teaching", desc: "We focus on real-world trade setups you can execute immediately, not concepts you have to figure out alone." },
+              { icon: "🧭", title: "Trade Independently", desc: "We teach you to read the market yourself so you are never dependent on anyone for your trading decisions." },
+              { icon: "📐", title: "Structured Curriculum", desc: "Disciplined curriculum, clear risk management rules, and consistent strategy — designed professionally." },
+              { icon: "🌱", title: "Beginner Friendly", desc: "Start from absolute zero. Our foundation courses are built for complete beginners with no prior experience." },
+              { icon: "🤝", title: "Ongoing Support", desc: "Get access to our community, live sessions, and mentor support even after completing your course." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">{item.icon}</div>
+                <div className="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">{item.icon}</div>
                 <h3 className="text-slate-900 font-bold text-lg mb-2">{item.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
@@ -420,11 +434,11 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Testimonials — real approved reviews from DB */}
-      <section className="py-20 px-4 bg-slate-900 text-white">
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 px-4 bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
               Student Reviews
             </div>
             <h2 className="text-4xl font-black mb-3">What Our Students Say</h2>
@@ -434,7 +448,7 @@ export default async function LandingPage() {
           {approvedReviews.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-slate-500 text-lg">No reviews yet — be the first to share your experience.</p>
-              <Link href="/reviews" className="inline-block mt-4 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
+              <Link href="/reviews" className="inline-block mt-4 text-yellow-400 hover:text-yellow-300 font-semibold transition-colors">
                 Submit a Review →
               </Link>
             </div>
@@ -442,7 +456,7 @@ export default async function LandingPage() {
             <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {approvedReviews.map((review, i) => (
-                  <div key={review.id} className="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-amber-500/20 transition-all flex flex-col">
+                  <div key={review.id} className="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-yellow-500/20 transition-all flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
                       <div className={`w-11 h-11 ${AVATAR_COLORS[i % AVATAR_COLORS.length]} rounded-full flex items-center justify-center flex-shrink-0`}>
                         <span className="text-white font-black text-sm">{getInitials(review.clientName)}</span>
@@ -454,7 +468,7 @@ export default async function LandingPage() {
                     </div>
                     <div className="flex gap-0.5 mb-3">
                       {Array.from({ length: review.rating }).map((_, j) => (
-                        <span key={j} className="text-amber-400 text-sm">★</span>
+                        <span key={j} className="text-yellow-400 text-sm">★</span>
                       ))}
                       {Array.from({ length: 5 - review.rating }).map((_, j) => (
                         <span key={j} className="text-slate-600 text-sm">★</span>
@@ -465,7 +479,7 @@ export default async function LandingPage() {
                 ))}
               </div>
               <div className="text-center mt-10">
-                <Link href="/reviews" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
+                <Link href="/reviews" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold transition-colors">
                   See all reviews →
                 </Link>
               </div>
@@ -478,39 +492,43 @@ export default async function LandingPage() {
       <section id="faq" className="py-20 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-600 text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider">
               FAQ
             </div>
             <h2 className="text-4xl font-black text-slate-900 mb-3">Frequently Asked Questions</h2>
-            <p className="text-slate-500 text-lg">Everything you need to know about our affiliate program</p>
+            <p className="text-slate-500 text-lg">Everything you need to know before you enroll</p>
           </div>
           <div className="space-y-4">
             {[
               {
-                q: "How does the affiliate program work?",
-                a: "Register as an affiliate, get approved, and receive your unique referral link. Share it with your audience. Every time someone purchases a service through your link, you earn 50% of the sale value.",
+                q: "How does the learning platform work?",
+                a: "Browse our available trading courses, select the one that suits your level, complete the payment, and get instant access to start learning.",
               },
               {
-                q: "When and how do I get paid?",
-                a: "Commissions are tracked in real time on your dashboard. Once you accumulate a balance, you can request a withdrawal through your affiliate dashboard. Payments are processed manually by our admin team.",
+                q: "When do I get access after purchasing a course?",
+                a: "You get access as soon as your payment is confirmed by our team — usually within a few hours. You will be contacted directly with your access details.",
               },
               {
-                q: "Is there a minimum withdrawal amount?",
-                a: "Yes, there is a minimum threshold for withdrawals. This ensures efficient processing. The exact amount is shown on your withdrawal page once your account is approved.",
+                q: "Is there a refund policy?",
+                a: "There is no minimum purchase limit. Refund terms depend on the specific course. Please contact us via WhatsApp before purchasing if you have any questions.",
               },
               {
-                q: "How long does account approval take?",
-                a: "Applications are typically reviewed within 24–48 hours. You will be notified once your account is approved and your referral link is activated.",
+                q: "How long does it take to complete a course?",
+                a: "It depends on the course and your pace. Most students complete foundation courses in 2–4 weeks with consistent daily study.",
               },
               {
-                q: "Can I promote multiple services?",
-                a: "Yes — your single referral link applies to all services and packages. Any purchase made through your link, regardless of which package, earns you 50% commission.",
+                q: "Can I enroll in multiple courses?",
+                a: "Yes — you can enroll in as many courses as you want and learn at your own pace. The Mastery Bundle gives you access to the full course library.",
+              },
+              {
+                q: "Do you offer live sessions?",
+                a: "Yes. Selected courses include weekly live market analysis sessions with our mentors. Schedules are shared after enrollment.",
               },
             ].map((item) => (
               <details key={item.q} className="group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                 <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none hover:bg-slate-50 transition-colors">
                   <span className="font-bold text-slate-900">{item.q}</span>
-                  <span className="text-amber-500 font-bold text-xl flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-yellow-500 font-bold text-xl flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
                 </summary>
                 <div className="px-6 pb-6">
                   <p className="text-slate-500 text-sm leading-relaxed">{item.a}</p>
@@ -522,13 +540,13 @@ export default async function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section id="contact" className="py-20 px-4 bg-amber-500">
+      <section id="contact" className="py-20 px-4 bg-yellow-500">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-black text-slate-900 mb-4">Ready to Start Earning?</h2>
-          <p className="text-slate-800 text-lg mb-8">Join The Pulse Traders Affiliate Program today and start building your passive income stream.</p>
+          <h2 className="text-4xl font-black text-slate-900 mb-4">Start Your Trading Journey Today</h2>
+          <p className="text-slate-800 text-lg mb-8">Join hundreds of students already learning professional trading with The Pulse Traders.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/register" className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-black text-lg px-10 py-4 rounded-xl transition-all hover:-translate-y-0.5 shadow-xl">
-              Register Now — It&apos;s Free
+            <Link href="/order" className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-black text-lg px-10 py-4 rounded-xl transition-all hover:-translate-y-0.5 shadow-xl">
+              Enroll Now — Get Started
             </Link>
             <Link href="/login" className="inline-block bg-transparent border-2 border-slate-900 text-slate-900 font-bold text-lg px-10 py-4 rounded-xl transition-all hover:bg-slate-900 hover:text-white">
               Sign In
@@ -545,27 +563,29 @@ export default async function LandingPage() {
               <div className="mb-3">
                 <Logo height={32} />
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed">Professional trading education and affiliate program with industry-leading 50% commissions.</p>
+              <p className="text-slate-400 text-sm leading-relaxed">Professional forex trading education with live mentorship, structured courses, and real-world market training.</p>
             </div>
             <div>
               <p className="text-white font-bold text-sm mb-3">Quick Links</p>
               <div className="space-y-2">
                 {[
                   { href: "#home", label: "Home" },
+                  { href: "#courses", label: "Courses" },
                   { href: "#about", label: "About" },
-                  { href: "#services", label: "Services" },
+                  { href: "#testimonials", label: "Testimonials" },
                   { href: "#faq", label: "FAQ" },
                 ].map((l) => (
-                  <a key={l.label} href={l.href} className="block text-slate-400 hover:text-amber-400 text-sm transition-colors">{l.label}</a>
+                  <a key={l.label} href={l.href} className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">{l.label}</a>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-white font-bold text-sm mb-3">Affiliate</p>
+              <p className="text-white font-bold text-sm mb-3">Account</p>
               <div className="space-y-2">
-                <Link href="/register" className="block text-slate-400 hover:text-amber-400 text-sm transition-colors">Register</Link>
-                <Link href="/login" className="block text-slate-400 hover:text-amber-400 text-sm transition-colors">Login</Link>
-                <Link href="/reviews" className="block text-slate-400 hover:text-amber-400 text-sm transition-colors">Reviews</Link>
+                <Link href="/order" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Enroll Now</Link>
+                <Link href="/login" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Login</Link>
+                <Link href="/reviews" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Reviews</Link>
+                <Link href="/register" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Affiliate Program</Link>
               </div>
             </div>
           </div>
@@ -573,7 +593,7 @@ export default async function LandingPage() {
             <p className="text-slate-500 text-sm">© 2026 The Pulse Traders. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <Link href="/reviews" className="text-slate-400 hover:text-white text-sm transition-colors">Reviews</Link>
-              <Link href="/register" className="text-slate-400 hover:text-white text-sm transition-colors">Register</Link>
+              <Link href="/order" className="text-slate-400 hover:text-white text-sm transition-colors">Enroll</Link>
               <Link href="/login" className="text-slate-400 hover:text-white text-sm transition-colors">Login</Link>
             </div>
           </div>

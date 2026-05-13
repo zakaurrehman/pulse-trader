@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
@@ -14,7 +13,6 @@ const PAYMENT_METHODS = [
 ];
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -96,14 +94,14 @@ export default function RegisterPage() {
           <Link href="/" className="inline-block">
             <Logo height={52} />
           </Link>
-          <p className="text-slate-400 mt-3 text-sm">Join the Affiliate Program</p>
+          <p className="text-slate-400 mt-3 text-sm">Join 500+ students learning professional trading</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="mb-6">
-            <h1 className="text-2xl font-black text-slate-900">Affiliate Registration</h1>
+            <h1 className="text-2xl font-black text-slate-900">Student Registration</h1>
             <p className="text-slate-500 text-sm mt-1">
-              Fill in your details below. All fields marked * are required.
+              Fill in your details below to create your learning account. Fields marked * are required.
             </p>
           </div>
 
@@ -178,7 +176,7 @@ export default function RegisterPage() {
               disabled={loading}
               className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
             >
-              {loading ? "Submitting..." : "Submit Registration"}
+              {loading ? "Submitting..." : "Start Learning Now"}
             </button>
           </form>
 
