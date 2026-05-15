@@ -12,18 +12,24 @@ function getInitials(name: string) {
 }
 
 export default async function LandingPage() {
-  const [dbSignalStats, approvedReviews] = await Promise.all([
+  const [dbSignalStats, approvedReviews, dbCourses] = await Promise.all([
     prisma.signalStat.findMany({ orderBy: { pair: "asc" } }).catch(() => []),
     prisma.review.findMany({
       where: { status: "APPROVED" },
       orderBy: { createdAt: "desc" },
       take: 6,
     }).catch(() => []),
+    prisma.course.findMany({ where: { active: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
   ]);
 
   const signalStats = dbSignalStats.map((s) => ({
     ...s,
     bars: s.barValues.split(",").map(Number),
+  }));
+
+  const courses = dbCourses.map((c) => ({
+    ...c,
+    features: c.features ? c.features.split("\n").filter(Boolean) : [],
   }));
 
   return (
@@ -137,135 +143,55 @@ export default async function LandingPage() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Basic Training",
-                original: "$37.70",
-                price: "$30.16",
-                period: "one-time",
-                badge: null,
-                popular: false,
-                disabled: false,
-                features: ["Forex fundamentals", "Chart reading basics", "Risk management guide", "Community access", "Email support"],
-                cta: "Enroll Now",
-              },
-              {
-                name: "Advanced Trading Strategies",
-                original: "$128.70",
-                price: "$102.96",
-                period: "one-time",
-                badge: "Most Popular",
-                popular: true,
-                disabled: false,
-                features: ["All Basic content", "Advanced technical analysis", "Entry & exit strategies", "Weekly live sessions", "Priority support", "Strategy playbooks"],
-                cta: "Enroll Now",
-              },
-              {
-                name: "Mastery Bundle",
-                original: "$154.70",
-                price: "$123.76",
-                period: "one-time",
-                badge: "Best Value",
-                popular: false,
-                disabled: false,
-                features: ["Full course library", "Exclusive masterclasses", "Trade review sessions", "Lifetime updates", "1-on-1 onboarding call"],
-                cta: "Enroll Now",
-              },
-              {
-                name: "Premium Signals",
-                original: "$63.70",
-                price: "$50.96",
-                period: "per month",
-                badge: null,
-                popular: false,
-                disabled: false,
-                features: ["Daily forex signals", "XAU/USD & major pairs", "Entry, TP & SL included", "Telegram delivery", "Win rate tracking"],
-                cta: "Subscribe",
-              },
-              {
-                name: "Personal Mentorship",
-                original: "$258.70",
-                price: "$206.96",
-                period: "one-time",
-                badge: null,
-                popular: false,
-                disabled: false,
-                features: ["Full Mastery Bundle", "4 private mentorship calls", "Personalized trade plan", "Psychology coaching", "Direct mentor access"],
-                cta: "Apply Now",
-              },
-              {
-                name: "Trading Bot",
-                original: null,
-                price: "TBA",
-                period: "coming soon",
-                badge: "Coming Soon",
-                popular: false,
-                disabled: true,
-                features: ["Automated trade execution", "Custom strategy config", "Risk management built-in", "Performance analytics", "24/7 market monitoring"],
-                cta: "Notify Me",
-              },
-            ].map((pkg) => (
+            {courses.map((pkg) => (
               <div
-                key={pkg.name}
+                key={pkg.id}
                 className={`relative rounded-2xl p-6 flex flex-col border transition-all hover:-translate-y-1 ${
                   pkg.popular
                     ? "bg-yellow-500 border-yellow-400 shadow-2xl shadow-yellow-500/20"
-                    : pkg.disabled
-                    ? "bg-slate-800/50 border-slate-700/50 opacity-75"
                     : "bg-slate-800 border-slate-700 hover:border-yellow-500/30"
                 }`}
               >
                 {pkg.badge && (
                   <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-black px-3 py-1 rounded-full whitespace-nowrap ${
-                    pkg.popular
-                      ? "bg-slate-900 text-yellow-400"
-                      : pkg.disabled
-                      ? "bg-slate-700 text-slate-300"
-                      : "bg-yellow-500 text-slate-900"
+                    pkg.popular ? "bg-slate-900 text-yellow-400" : "bg-yellow-500 text-slate-900"
                   }`}>
                     {pkg.badge}
                   </div>
                 )}
                 <div className="mb-4">
-                  <h3 className={`font-bold text-lg mb-3 ${pkg.popular ? "text-slate-900" : "text-white"}`}>{pkg.name}</h3>
-                  <div className="flex items-baseline gap-2 flex-wrap">
-                    {pkg.original && (
-                      <span className={`text-sm line-through ${pkg.popular ? "text-slate-700" : "text-slate-500"}`}>{pkg.original}</span>
-                    )}
-                    {pkg.original && (
-                      <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-yellow-500/20 text-yellow-400"}`}>
-                        20% OFF
-                      </span>
-                    )}
-                  </div>
+                  <h3 className={`font-bold text-lg mb-1 ${pkg.popular ? "text-slate-900" : "text-white"}`}>{pkg.name}</h3>
+                  {pkg.description && (
+                    <p className={`text-sm mb-3 leading-relaxed ${pkg.popular ? "text-slate-700" : "text-slate-400"}`}>{pkg.description}</p>
+                  )}
                   <div className="mt-1">
-                    <span className={`text-3xl font-black ${pkg.popular ? "text-slate-900" : pkg.disabled ? "text-slate-400" : "text-yellow-400"}`}>
-                      {pkg.price}
+                    <span className={`text-3xl font-black ${pkg.popular ? "text-slate-900" : "text-yellow-400"}`}>
+                      ${pkg.price.toFixed(2)}
                     </span>
                     <span className={`text-sm ml-1 ${pkg.popular ? "text-slate-800" : "text-slate-500"}`}>/{pkg.period}</span>
                   </div>
                 </div>
-                <ul className="space-y-2.5 flex-1 mb-6">
-                  {pkg.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <span className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold ${
-                        pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-yellow-500/20 text-yellow-400"
-                      }`}>✓</span>
-                      <span className={`text-sm ${pkg.popular ? "text-slate-800" : "text-slate-400"}`}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
+                {pkg.features.length > 0 && (
+                  <ul className="space-y-2.5 flex-1 mb-6">
+                    {pkg.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2">
+                        <span className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold ${
+                          pkg.popular ? "bg-slate-900/20 text-slate-900" : "bg-yellow-500/20 text-yellow-400"
+                        }`}>✓</span>
+                        <span className={`text-sm ${pkg.popular ? "text-slate-800" : "text-slate-400"}`}>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <Link
-                  href={pkg.disabled ? "#" : `/order?service=${encodeURIComponent(pkg.name)}`}
-                  className={`w-full text-center py-3 rounded-xl font-bold text-sm transition-all ${
+                  href={`/order?service=${encodeURIComponent(pkg.name)}`}
+                  className={`w-full text-center py-3 rounded-xl font-bold text-sm transition-all mt-auto ${
                     pkg.popular
                       ? "bg-slate-900 hover:bg-slate-800 text-white"
-                      : pkg.disabled
-                      ? "bg-slate-700/50 text-slate-500 cursor-not-allowed pointer-events-none"
                       : "bg-yellow-500 hover:bg-yellow-400 text-slate-900"
                   }`}
                 >
-                  {pkg.cta}
+                  Enroll Now
                 </Link>
               </div>
             ))}

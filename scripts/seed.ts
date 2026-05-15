@@ -61,7 +61,72 @@ async function seedSignalStats() {
   console.log("Signal stats seeded.");
 }
 
+async function seedCourses() {
+  const courses = [
+    {
+      name: "Basic Training",
+      price: 30.16,
+      period: "one-time",
+      description: "Perfect starting point for beginners entering the forex market.",
+      features: "Forex fundamentals\nChart reading basics\nRisk management guide\nCommunity access\nEmail support",
+      badge: null,
+      popular: false,
+      sortOrder: 1,
+    },
+    {
+      name: "Advanced Trading Strategies",
+      price: 102.96,
+      period: "one-time",
+      description: "Master professional-level strategies used by institutional traders.",
+      features: "All Basic content\nAdvanced technical analysis\nEntry & exit strategies\nWeekly live sessions\nPriority support\nStrategy playbooks",
+      badge: "Most Popular",
+      popular: true,
+      sortOrder: 2,
+    },
+    {
+      name: "Mastery Bundle",
+      price: 123.76,
+      period: "one-time",
+      description: "Complete course library with lifetime access and exclusive masterclasses.",
+      features: "Full course library\nExclusive masterclasses\nTrade review sessions\nLifetime updates\n1-on-1 onboarding call",
+      badge: "Best Value",
+      popular: false,
+      sortOrder: 3,
+    },
+    {
+      name: "Premium Signals",
+      price: 50.96,
+      period: "per month",
+      description: "Daily high-accuracy signals for forex majors and XAU/USD.",
+      features: "Daily forex signals\nXAU/USD & major pairs\nEntry, TP & SL included\nTelegram delivery\nWin rate tracking",
+      badge: null,
+      popular: false,
+      sortOrder: 4,
+    },
+    {
+      name: "Personal Mentorship",
+      price: 206.96,
+      period: "one-time",
+      description: "One-on-one coaching with a professional trader. Limited spots.",
+      features: "Full Mastery Bundle\n4 private mentorship calls\nPersonalized trade plan\nPsychology coaching\nDirect mentor access",
+      badge: null,
+      popular: false,
+      sortOrder: 5,
+    },
+  ];
+
+  for (const c of courses) {
+    await prisma.course.upsert({
+      where: { name: c.name },
+      update: {},
+      create: { ...c, badge: c.badge ?? undefined },
+    });
+  }
+  console.log("Courses seeded.");
+}
+
 main()
   .then(() => seedSignalStats())
+  .then(() => seedCourses())
   .catch(console.error)
   .finally(() => prisma.$disconnect());

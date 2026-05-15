@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { SERVICES } from "@/lib/services";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -10,7 +9,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Name, email and service are required" }, { status: 400 });
   }
 
-  const found = SERVICES.find((s) => s.name === service);
+  const found = await prisma.course.findFirst({ where: { name: service, active: true } });
   if (!found) {
     return NextResponse.json({ error: "Invalid service selected" }, { status: 400 });
   }

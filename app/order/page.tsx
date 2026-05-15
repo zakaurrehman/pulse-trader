@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { prisma } from "@/lib/prisma";
 import OrderForm from "@/components/OrderForm";
 
 export default async function OrderPage({
@@ -10,5 +11,16 @@ export default async function OrderPage({
   const refCode = cookieStore.get("ref_code")?.value ?? "";
   const { service } = await searchParams;
 
-  return <OrderForm defaultRefCode={refCode} defaultService={service ?? ""} />;
+  const courses = await prisma.course.findMany({
+    where: { active: true },
+    orderBy: { sortOrder: "asc" },
+  });
+
+  return (
+    <OrderForm
+      defaultRefCode={refCode}
+      defaultService={service ?? ""}
+      courses={courses}
+    />
+  );
 }

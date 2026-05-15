@@ -1,15 +1,23 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { SERVICES } from "@/lib/services";
 import Logo from "@/components/Logo";
+
+type Course = {
+  id: string;
+  name: string;
+  price: number;
+  period: string;
+};
 
 export default function OrderForm({
   defaultRefCode,
   defaultService,
+  courses,
 }: {
   defaultRefCode: string;
   defaultService: string;
+  courses: Course[];
 }) {
   const [form, setForm] = useState({
     clientName: "",
@@ -24,7 +32,7 @@ export default function OrderForm({
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const selectedService = SERVICES.find((s) => s.name === form.service);
+  const selectedService = courses.find((s) => s.name === form.service);
 
   function set(field: string, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -94,7 +102,7 @@ export default function OrderForm({
               Choose Your Service
             </h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              {SERVICES.map((s) => (
+              {courses.map((s) => (
                 <label
                   key={s.name}
                   className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${

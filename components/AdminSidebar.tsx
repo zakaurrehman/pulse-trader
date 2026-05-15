@@ -9,6 +9,7 @@ const links = [
   { href: "/admin", label: "Overview", icon: "📈" },
   { href: "/admin/affiliates", label: "Affiliates", icon: "👤" },
   { href: "/admin/payments", label: "Payments", icon: "💳" },
+  { href: "/admin/courses", label: "Courses", icon: "🎓" },
   { href: "/admin/sales", label: "Log a Sale", icon: "🖊️" },
   { href: "/admin/withdrawals", label: "Withdrawals", icon: "💸" },
   { href: "/admin/reviews", label: "Reviews", icon: "⭐" },
