@@ -6,12 +6,8 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Pulse Traders — Affiliate Program",
-  description: "Partner with The Pulse Traders. Earn 50% commission on every successful sale through your unique referral link.",
-  icons: {
-    icon: "/The Pulse Traders Fav 32x32 webp.webp",
-    shortcut: "/The Pulse Traders Fav 32x32 webp.webp",
-  },
+  title: "Dominators Club — Trading Education",
+  description: "Learn professional forex trading with Dominators Club. Structured courses, live mentorship, and real-world market training.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

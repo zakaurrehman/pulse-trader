@@ -9,7 +9,7 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
   const adminUsername = process.env.ADMIN_USERNAME || "admin";
   const adminPassword = process.env.ADMIN_PASSWORD || "Admin@123456";
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@thepulsetraders.com";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@dominatorsclub.com";
 
   const existing = await prisma.user.findFirst({
     where: { OR: [{ username: adminUsername }, { role: "ADMIN" }] },
@@ -24,7 +24,7 @@ async function main() {
 
   const admin = await prisma.user.create({
     data: {
-      fullName: "The Pulse Traders Admin",
+      fullName: "Dominators Club Admin",
       email: adminEmail,
       phone: "N/A",
       city: "N/A",

@@ -339,7 +339,7 @@ export default async function LandingPage() {
               Why Choose Us
             </div>
             <h2 className="text-4xl font-black text-slate-900 mb-3">Built for Serious Traders</h2>
-            <p className="text-slate-500 text-lg">What sets The Pulse Traders apart from every other course</p>
+            <p className="text-slate-500 text-lg">What sets Dominators Club apart from every other course</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -469,7 +469,7 @@ export default async function LandingPage() {
       <section id="contact" className="py-20 px-4 bg-yellow-500">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-black text-slate-900 mb-4">Start Your Trading Journey Today</h2>
-          <p className="text-slate-800 text-lg mb-8">Join hundreds of students already learning professional trading with The Pulse Traders.</p>
+          <p className="text-slate-800 text-lg mb-8">Join hundreds of students already learning professional trading with Dominators Club.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/order" className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-black text-lg px-10 py-4 rounded-xl transition-all hover:-translate-y-0.5 shadow-xl">
               Enroll Now — Get Started
@@ -516,7 +516,7 @@ export default async function LandingPage() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-slate-500 text-sm">© 2026 The Pulse Traders. All rights reserved.</p>
+            <p className="text-slate-500 text-sm">© 2026 Dominators Club. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <Link href="/reviews" className="text-slate-400 hover:text-white text-sm transition-colors">Reviews</Link>
               <Link href="/order" className="text-slate-400 hover:text-white text-sm transition-colors">Enroll</Link>

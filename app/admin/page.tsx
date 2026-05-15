@@ -38,7 +38,7 @@ export default function AdminOverviewPage() {
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl font-black text-slate-900">Admin Overview</h1>
-        <p className="text-slate-500 mt-1">The Pulse Traders Affiliate Program — Control Panel</p>
+        <p className="text-slate-500 mt-1">Dominators Club — Control Panel</p>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">

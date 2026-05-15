@@ -149,7 +149,7 @@ export default function OrderForm({
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Bank Transfer</p>
                   <p className="text-sm text-slate-700 font-medium">Bank Name: <span className="text-slate-500">[Your Bank Name]</span></p>
                   <p className="text-sm text-slate-700 font-medium">Account Number: <span className="text-slate-500">[Your Account Number]</span></p>
-                  <p className="text-sm text-slate-700 font-medium">Account Name: <span className="text-slate-500">The Pulse Traders</span></p>
+                  <p className="text-sm text-slate-700 font-medium">Account Name: <span className="text-slate-500">Dominators Club</span></p>
                 </div>
                 <div className="bg-white rounded-xl border border-amber-200 p-4">
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">WhatsApp / Contact</p>

@@ -148,7 +148,7 @@ export default function ReviewsPage() {
                       required
                       value={form.content}
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
-                      placeholder="Share your trading experience with The Pulse Traders..."
+                      placeholder="Share your trading experience with Dominators Club..."
                       rows={4}
                       className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
                     />
