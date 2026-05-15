@@ -38,7 +38,7 @@ export default function Logo({ height = 40 }: { height?: number }) {
   };
 
   const topStyle: CSSProperties = {
-    color: "currentColor",
+    color: "#ffffff",
     fontWeight: 900,
     fontSize: `${Math.round(height * 0.4)}px`,
     letterSpacing: "-0.02em",
