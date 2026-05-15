@@ -57,7 +57,8 @@ export default function AdminPaymentsPage() {
     const data = await res.json();
     setActing(null);
     if (res.ok) {
-      showToast("Payment confirmed — sale & commission recorded!", true);
+      const info = data.enrolled ? " Student enrolled automatically." : data.studentFound === false ? " No student account found for this email." : "";
+      showToast("Payment confirmed!" + info, true);
       load();
     } else {
       showToast(data.error || "Failed to confirm", false);

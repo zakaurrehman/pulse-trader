@@ -432,7 +432,7 @@ export default async function LandingPage() {
               },
               {
                 q: "When do I get access after purchasing a course?",
-                a: "You get access as soon as your payment is confirmed by our team — usually within a few hours. You will be contacted directly with your access details.",
+                a: "You get access as soon as your payment is confirmed by our team — usually within a few hours. Once confirmed, simply log in to your student account and your course will be unlocked automatically.",
               },
               {
                 q: "Is there a refund policy?",
@@ -511,7 +511,7 @@ export default async function LandingPage() {
                 <Link href="/order" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Enroll Now</Link>
                 <Link href="/login" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Login</Link>
                 <Link href="/reviews" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Reviews</Link>
-                <Link href="/register" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Affiliate Program</Link>
+                <Link href="/register/affiliate" className="block text-slate-400 hover:text-yellow-400 text-sm transition-colors">Affiliate Program</Link>
               </div>
             </div>
           </div>

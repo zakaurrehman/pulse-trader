@@ -7,10 +7,10 @@ interface Affiliate {
   fullName: string;
   email: string;
   phone: string;
-  city: string;
+  city: string | null;
   country: string;
   username: string;
-  paymentMethod: string;
+  paymentMethod: string | null;
   socialHandle: string | null;
   status: string;
   referralCode: string | null;
@@ -127,9 +127,9 @@ export default function AffiliatesPage() {
                       )}
                     </td>
                     <td className="px-4 py-4 text-slate-600 text-sm">
-                      {a.city}, {a.country}
+                      {a.city ? `${a.city}, ` : ""}{a.country}
                     </td>
-                    <td className="px-4 py-4 text-slate-600 text-sm">{a.paymentMethod}</td>
+                    <td className="px-4 py-4 text-slate-600 text-sm">{a.paymentMethod ?? "—"}</td>
                     <td className="px-4 py-4 text-slate-600 text-sm">{a._count.sales}</td>
                     <td className="px-4 py-4">
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${statusColors[a.status]}`}>
