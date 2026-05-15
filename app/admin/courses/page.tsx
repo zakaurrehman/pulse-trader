@@ -14,7 +14,18 @@ type Course = {
   sortOrder: number;
 };
 
-const BLANK: Omit<Course, "id" | "active"> = {
+type FormState = {
+  name: string;
+  price: number;
+  period: string;
+  description: string;
+  features: string;
+  badge: string;
+  popular: boolean;
+  sortOrder: number;
+};
+
+const BLANK: FormState = {
   name: "",
   price: 0,
   period: "one-time",
@@ -30,7 +41,7 @@ export default function AdminCoursesPage() {
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<Course | null>(null);
   const [adding, setAdding] = useState(false);
-  const [form, setForm] = useState<typeof BLANK>(BLANK);
+  const [form, setForm] = useState<FormState>(BLANK);
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState("");
   const [deleteId, setDeleteId] = useState<string | null>(null);
