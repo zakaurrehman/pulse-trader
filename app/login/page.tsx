@@ -38,6 +38,8 @@ export default function LoginPage() {
     const session = await res.json();
     if (session?.user?.role === "ADMIN") {
       router.push("/admin");
+    } else if (session?.user?.role === "STUDENT") {
+      router.push("/learn");
     } else {
       router.push("/dashboard");
     }
@@ -51,7 +53,7 @@ export default function LoginPage() {
           <Link href="/" className="inline-block">
             <Logo height={52} />
           </Link>
-          <p className="text-slate-400 mt-3 text-sm">Sign in to your affiliate account</p>
+          <p className="text-slate-400 mt-3 text-sm">Sign in to your account</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-2xl p-8">
@@ -103,7 +105,7 @@ export default function LoginPage() {
           <p className="text-center text-slate-500 text-sm mt-6">
             Don&apos;t have an account?{" "}
             <Link href="/register" className="text-amber-600 font-semibold hover:text-amber-500">
-              Register as affiliate
+              Create an account
             </Link>
           </p>
         </div>

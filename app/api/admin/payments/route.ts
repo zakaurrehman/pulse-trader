@@ -60,7 +60,7 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json(updated);
   }
 
-  // Confirm: find affiliate and create Sale + Commission
+  // Confirm: optionally find affiliate, then create Sale + Commission
   let affiliateId: string | null = null;
   if (payment.referralCode) {
     const affiliate = await prisma.user.findUnique({
@@ -68,39 +68,57 @@ export async function PATCH(req: NextRequest) {
     });
     if (affiliate && affiliate.status === "APPROVED") {
       affiliateId = affiliate.id;
+    } else {
+      return NextResponse.json(
+        { error: "Referral code is invalid or affiliate is not approved." },
+        { status: 400 }
+      );
     }
   }
 
-  if (!affiliateId) {
-    return NextResponse.json(
-      { error: "No valid approved affiliate found for this referral code. Cannot confirm without an affiliate." },
-      { status: 400 }
-    );
-  }
+  // Find the course to create enrollment
+  const course = await prisma.course.findFirst({ where: { name: payment.service } });
 
-  const [sale, updated] = await prisma.$transaction(async (tx) => {
-    const s = await tx.sale.create({
-      data: {
-        affiliateId,
-        clientName: payment.clientName,
-        clientEmail: payment.clientEmail,
-        amount: payment.amount,
-        description: payment.service,
-      },
-    });
-    await tx.commission.create({
-      data: {
-        saleId: s.id,
-        affiliateId,
-        amount: payment.amount * 0.5,
-      },
-    });
-    const p = await tx.paymentRequest.update({
+  // Find the student account by email
+  const student = await prisma.user.findFirst({
+    where: { email: payment.clientEmail, role: "STUDENT" },
+  });
+
+  const updated = await prisma.$transaction(async (tx) => {
+    // Create sale + commission only if there's an affiliate
+    if (affiliateId) {
+      const s = await tx.sale.create({
+        data: {
+          affiliateId,
+          clientName: payment.clientName,
+          clientEmail: payment.clientEmail,
+          amount: payment.amount,
+          description: payment.service,
+        },
+      });
+      await tx.commission.create({
+        data: { saleId: s.id, affiliateId, amount: payment.amount * 0.5 },
+      });
+    }
+
+    // Auto-enroll student if account + course found
+    if (student && course) {
+      await tx.enrollment.upsert({
+        where: { studentId_courseId: { studentId: student.id, courseId: course.id } },
+        update: {},
+        create: { studentId: student.id, courseId: course.id, paymentRequestId: payment.id },
+      });
+    }
+
+    return tx.paymentRequest.update({
       where: { id },
       data: { status: "CONFIRMED" },
     });
-    return [s, p];
   });
 
-  return NextResponse.json({ sale, payment: updated });
+  return NextResponse.json({
+    payment: updated,
+    enrolled: !!(student && course),
+    studentFound: !!student,
+  });
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 
 type Course = {
   id: string;
@@ -333,7 +334,13 @@ export default function AdminCoursesPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
+                <Link
+                  href={`/admin/courses/${c.id}/videos`}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-300 text-amber-700 hover:bg-amber-50 transition-colors"
+                >
+                  🎬 Videos
+                </Link>
                 <button
                   onClick={() => toggleActive(c)}
                   className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
