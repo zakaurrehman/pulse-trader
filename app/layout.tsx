@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dominators Club — Trading Education",
   description: "Learn professional forex trading with Dominators Club. Structured courses, live mentorship, and real-world market training.",
+  icons: {
+    icon: "/favicon.webp",
+    shortcut: "/favicon.webp",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
