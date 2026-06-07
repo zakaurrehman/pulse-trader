@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
 
@@ -71,7 +71,7 @@ export default function AffiliatesPage() {
             key={s}
             onClick={() => setFilter(s)}
             className={`p-4 rounded-2xl border text-left transition-all ${
-              filter === s ? "border-amber-400 bg-amber-50" : "border-slate-200 bg-white hover:shadow-sm"
+              filter === s ? "border-gold-400 bg-gold-50" : "border-slate-200 bg-white hover:shadow-sm"
             }`}
           >
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">{s}</p>
@@ -123,7 +123,7 @@ export default function AffiliatesPage() {
                       <p className="text-slate-400 text-xs">{a.phone}</p>
                       <p className="text-slate-500 text-xs font-mono mt-0.5">@{a.username}</p>
                       {a.referralCode && (
-                        <p className="text-amber-600 text-xs font-mono mt-0.5">Code: {a.referralCode}</p>
+                        <p className="text-gold-600 text-xs font-mono mt-0.5">Code: {a.referralCode}</p>
                       )}
                     </td>
                     <td className="px-4 py-4 text-slate-600 text-sm">

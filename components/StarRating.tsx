@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 export function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
   return (
@@ -6,7 +6,7 @@ export function StarRating({ rating, max = 5 }: { rating: number; max?: number }
       {Array.from({ length: max }).map((_, i) => (
         <span
           key={i}
-          className={`text-lg ${i < rating ? "text-amber-400" : "text-slate-300"}`}
+          className={`text-lg ${i < rating ? "text-gold-400" : "text-slate-300"}`}
         >
           ★
         </span>
@@ -30,7 +30,7 @@ export function StarPicker({
           type="button"
           onClick={() => onChange(star)}
           className={`text-3xl transition-colors hover:scale-110 ${
-            star <= value ? "text-amber-400" : "text-slate-300 hover:text-amber-300"
+            star <= value ? "text-gold-400" : "text-slate-300 hover:text-gold-300"
           }`}
         >
           ★

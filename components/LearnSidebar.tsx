@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -29,7 +29,7 @@ export default function LearnSidebar({ name }: { name?: string | null }) {
           onClick={() => setOpen(false)}
           className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
             pathname === "/learn"
-              ? "bg-amber-500 text-slate-900"
+              ? "bg-gold-500 text-slate-900"
               : "text-slate-400 hover:bg-slate-800 hover:text-white"
           }`}
         >

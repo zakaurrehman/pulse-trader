@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, useCallback, use } from "react";
 import { upload } from "@vercel/blob/client";
 import Link from "next/link";
@@ -63,6 +63,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
       const blob = await upload(file.name, file, {
         access: "public",
         handleUploadUrl: "/api/admin/videos/upload",
+        multipart: true,
         onUploadProgress: ({ percentage }) => setProgress(Math.round(percentage)),
       });
 
@@ -164,7 +165,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="e.g. Introduction to Forex"
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
             />
           </div>
           <div>
@@ -173,7 +174,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
               value={newDesc}
               onChange={(e) => setNewDesc(e.target.value)}
               placeholder="Brief description of this lesson"
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
             />
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -183,7 +184,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
                 type="number"
                 value={newOrder}
                 onChange={(e) => setNewOrder(parseInt(e.target.value) || 0)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
               />
             </div>
             <div>
@@ -192,7 +193,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
                 type="file"
                 accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,video/mpeg"
                 onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                className="w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100"
+                className="w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-50 file:text-gold-700 hover:file:bg-gold-100"
               />
               {file && <p className="text-xs text-slate-400 mt-1">{file.name} ({formatSize(file.size)})</p>}
             </div>
@@ -206,7 +207,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
               </div>
               <div className="w-full bg-slate-100 rounded-full h-2">
                 <div
-                  className="bg-amber-500 h-2 rounded-full transition-all duration-300"
+                  className="bg-gold-500 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -216,7 +217,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
           <button
             onClick={handleUpload}
             disabled={uploading || !file || !newTitle.trim()}
-            className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
+            className="bg-gold-500 hover:bg-gold-400 disabled:opacity-50 text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
           >
             {uploading ? `Uploading ${progress}%…` : "Upload Video"}
           </button>
@@ -239,16 +240,16 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
                   <input
                     value={editForm.title}
                     onChange={(e) => setEditForm((f) => ({ ...f, title: e.target.value }))}
-                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                   <input
                     value={editForm.description}
                     onChange={(e) => setEditForm((f) => ({ ...f, description: e.target.value }))}
                     placeholder="Description"
-                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => saveEdit(v.id)} className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-4 py-1.5 rounded-lg text-sm">Save</button>
+                    <button onClick={() => saveEdit(v.id)} className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-4 py-1.5 rounded-lg text-sm">Save</button>
                     <button onClick={() => setEditingId(null)} className="border border-slate-300 text-slate-700 px-4 py-1.5 rounded-lg text-sm hover:bg-slate-50">Cancel</button>
                   </div>
                 </div>

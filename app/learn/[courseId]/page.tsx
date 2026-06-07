@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth";
+﻿import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
@@ -84,16 +84,16 @@ export default async function CoursePlayerPage({
                     key={v.id}
                     href={`/learn/${courseId}?v=${v.id}`}
                     className={`flex items-start gap-3 px-4 py-3 border-b border-slate-800/50 transition-colors ${
-                      isActive ? "bg-amber-500/10 border-l-2 border-l-amber-500" : "hover:bg-slate-800"
+                      isActive ? "bg-gold-500/10 border-l-2 border-l-gold-500" : "hover:bg-slate-800"
                     }`}
                   >
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
-                      isActive ? "bg-amber-500 text-slate-900" : "bg-slate-700 text-slate-300"
+                      isActive ? "bg-gold-500 text-slate-900" : "bg-slate-700 text-slate-300"
                     }`}>
                       {i + 1}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-semibold truncate ${isActive ? "text-amber-400" : "text-slate-300"}`}>
+                      <p className={`text-sm font-semibold truncate ${isActive ? "text-gold-400" : "text-slate-300"}`}>
                         {v.title}
                       </p>
                       {v.description && (

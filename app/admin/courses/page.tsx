@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
@@ -178,7 +178,7 @@ export default function AdminCoursesPage() {
         </div>
         <button
           onClick={openAdd}
-          className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
+          className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
         >
           + Add Course
         </button>
@@ -194,7 +194,7 @@ export default function AdminCoursesPage() {
               <input
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
                 placeholder="e.g. Advanced Trading Strategies"
               />
             </div>
@@ -207,7 +207,7 @@ export default function AdminCoursesPage() {
                 min="0"
                 value={form.price}
                 onChange={(e) => setForm((f) => ({ ...f, price: parseFloat(e.target.value) || 0 }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
               />
             </div>
 
@@ -216,7 +216,7 @@ export default function AdminCoursesPage() {
               <select
                 value={form.period}
                 onChange={(e) => setForm((f) => ({ ...f, period: e.target.value }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500 bg-white"
               >
                 <option value="one-time">One-time</option>
                 <option value="per month">Per month</option>
@@ -229,7 +229,7 @@ export default function AdminCoursesPage() {
               <input
                 value={form.description}
                 onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
                 placeholder="Brief course description shown on the landing page"
               />
             </div>
@@ -240,7 +240,7 @@ export default function AdminCoursesPage() {
                 rows={5}
                 value={form.features}
                 onChange={(e) => setForm((f) => ({ ...f, features: e.target.value }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500 resize-none"
                 placeholder={"Forex fundamentals\nChart reading basics\nRisk management guide"}
               />
             </div>
@@ -250,7 +250,7 @@ export default function AdminCoursesPage() {
               <input
                 value={form.badge}
                 onChange={(e) => setForm((f) => ({ ...f, badge: e.target.value }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
                 placeholder="e.g. Most Popular, Best Value"
               />
             </div>
@@ -261,7 +261,7 @@ export default function AdminCoursesPage() {
                 type="number"
                 value={form.sortOrder}
                 onChange={(e) => setForm((f) => ({ ...f, sortOrder: parseInt(e.target.value) || 0 }))}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
               />
             </div>
 
@@ -273,7 +273,7 @@ export default function AdminCoursesPage() {
                   onChange={(e) => setForm((f) => ({ ...f, popular: e.target.checked }))}
                   className="sr-only peer"
                 />
-                <div className="w-10 h-6 bg-slate-200 peer-focus:ring-2 peer-focus:ring-amber-500 rounded-full peer peer-checked:bg-amber-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-4" />
+                <div className="w-10 h-6 bg-slate-200 peer-focus:ring-2 peer-focus:ring-gold-500 rounded-full peer peer-checked:bg-gold-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-4" />
               </label>
               <span className="text-sm font-semibold text-slate-700">Highlight as popular (gold card)</span>
             </div>
@@ -283,7 +283,7 @@ export default function AdminCoursesPage() {
             <button
               onClick={save}
               disabled={saving}
-              className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
+              className="bg-gold-500 hover:bg-gold-400 disabled:opacity-50 text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
             >
               {saving ? "Saving…" : adding ? "Add Course" : "Save Changes"}
             </button>
@@ -312,7 +312,7 @@ export default function AdminCoursesPage() {
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-bold text-slate-900">{c.name}</span>
                   {c.badge && (
-                    <span className="text-xs font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">{c.badge}</span>
+                    <span className="text-xs font-bold bg-gold-100 text-gold-700 px-2 py-0.5 rounded-full">{c.badge}</span>
                   )}
                   {c.popular && (
                     <span className="text-xs font-bold bg-yellow-500/20 text-yellow-700 px-2 py-0.5 rounded-full">Popular</span>
@@ -321,7 +321,7 @@ export default function AdminCoursesPage() {
                     <span className="text-xs font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Inactive</span>
                   )}
                 </div>
-                <p className="text-amber-600 font-black text-lg mt-0.5">
+                <p className="text-gold-600 font-black text-lg mt-0.5">
                   ${c.price.toFixed(2)} <span className="text-slate-400 font-normal text-sm">/ {c.period}</span>
                 </p>
                 {c.description && (
@@ -337,7 +337,7 @@ export default function AdminCoursesPage() {
               <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
                 <Link
                   href={`/admin/courses/${c.id}/videos`}
-                  className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-300 text-amber-700 hover:bg-amber-50 transition-colors"
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-gold-300 text-gold-700 hover:bg-gold-50 transition-colors"
                 >
                   🎬 Videos
                 </Link>

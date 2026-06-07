@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-gold-50: #fdf8e7;
+  --color-gold-100: #fbefc4;
+  --color-gold-200: #f5de8a;
+  --color-gold-300: #eccc55;
+  --color-gold-400: #dfbc3a;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #b8960a;
+  --color-gold-700: #917508;
+  --color-gold-800: #6e5906;
+  --color-gold-900: #4f3f04;
+}
+
 * {
   box-sizing: border-box;
 }

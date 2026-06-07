@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
 import { StarRating, StarPicker } from "@/components/StarRating";
@@ -66,7 +66,7 @@ export default function ReviewsPage() {
           <Link href="/">
             <Logo height={38} />
           </Link>
-          <Link href="/register" className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
+          <Link href="/register" className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors">
             Join Affiliate Program
           </Link>
         </div>
@@ -102,7 +102,7 @@ export default function ReviewsPage() {
                 </div>
                 <button
                   onClick={() => setShowForm(true)}
-                  className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
+                  className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
                 >
                   Write a Review
                 </button>
@@ -124,7 +124,7 @@ export default function ReviewsPage() {
                         value={form.clientName}
                         onChange={(e) => setForm({ ...form, clientName: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-gold-500"
                       />
                     </div>
                     <div>
@@ -134,7 +134,7 @@ export default function ReviewsPage() {
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="john@email.com"
-                        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-gold-500"
                       />
                     </div>
                   </div>
@@ -150,14 +150,14 @@ export default function ReviewsPage() {
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
                       placeholder="Share your trading experience with Dominators Club..."
                       rows={4}
-                      className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                      className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-gold-500 resize-none"
                     />
                   </div>
                   <div className="flex gap-3">
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black px-6 py-2.5 rounded-lg transition-colors"
+                      className="bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black px-6 py-2.5 rounded-lg transition-colors"
                     >
                       {submitting ? "Submitting..." : "Submit Review"}
                     </button>
@@ -188,7 +188,7 @@ export default function ReviewsPage() {
               <div key={review.id} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-amber-500 font-black text-sm">
+                    <span className="text-gold-500 font-black text-sm">
                       {review.clientName[0].toUpperCase()}
                     </span>
                   </div>

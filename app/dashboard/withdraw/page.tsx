@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 
@@ -64,7 +64,7 @@ export default function WithdrawPage() {
         {fetching ? (
           <div className="h-10 bg-slate-800 rounded animate-pulse w-32" />
         ) : (
-          <p className="text-amber-400 font-black text-4xl">{formatCurrency(available)}</p>
+          <p className="text-gold-400 font-black text-4xl">{formatCurrency(available)}</p>
         )}
         <p className="text-slate-500 text-sm mt-2">This is the amount available for withdrawal</p>
       </div>
@@ -100,7 +100,7 @@ export default function WithdrawPage() {
                 onChange={(e) => setAmount(e.target.value)}
                 required
                 placeholder="0.00"
-                className="w-full border border-slate-300 rounded-lg pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
               />
             </div>
             <p className="text-slate-400 text-xs mt-1">Max: {formatCurrency(available)}</p>
@@ -116,7 +116,7 @@ export default function WithdrawPage() {
           <button
             type="submit"
             disabled={loading || fetching || available <= 0}
-            className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-900 font-black py-3 rounded-lg transition-colors"
+            className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-900 font-black py-3 rounded-lg transition-colors"
           >
             {loading ? "Submitting..." : "Submit Withdrawal Request"}
           </button>
@@ -131,7 +131,7 @@ export default function WithdrawPage() {
               "You'll see the status update in your commissions page",
             ].map((step) => (
               <li key={step} className="flex items-start gap-2 text-slate-500 text-sm">
-                <span className="text-amber-500 mt-0.5">→</span>
+                <span className="text-gold-500 mt-0.5">→</span>
                 {step}
               </li>
             ))}

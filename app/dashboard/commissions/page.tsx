@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ export default function CommissionsPage() {
       <div className="grid sm:grid-cols-3 gap-4 mb-8">
         {[
           { label: "Total Earned", value: formatCurrency(stats?.earnedCommissions ?? 0), color: "text-green-600", sub: "All-time commissions" },
-          { label: "Available Balance", value: formatCurrency(stats?.availableBalance ?? 0), color: "text-amber-600", sub: "Ready to withdraw" },
+          { label: "Available Balance", value: formatCurrency(stats?.availableBalance ?? 0), color: "text-gold-600", sub: "Ready to withdraw" },
           { label: "Total Withdrawn", value: formatCurrency(stats?.withdrawnAmount ?? 0), color: "text-slate-700", sub: "Successfully paid" },
         ].map((c) => (
           <div key={c.label} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
@@ -51,7 +51,7 @@ export default function CommissionsPage() {
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
           <h2 className="font-bold text-slate-900">Withdrawal History</h2>
-          <a href="/dashboard/withdraw" className="text-amber-600 hover:text-amber-500 text-sm font-semibold">
+          <a href="/dashboard/withdraw" className="text-gold-600 hover:text-gold-500 text-sm font-semibold">
             Request Withdrawal →
           </a>
         </div>

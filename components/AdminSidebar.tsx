@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -32,8 +32,8 @@ export default function AdminSidebar() {
       </div>
 
       <div className="px-5 py-4 border-b border-slate-800">
-        <span className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-400 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-500/20">
-          <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
+        <span className="inline-flex items-center gap-1.5 bg-gold-500/10 text-gold-400 text-xs font-bold px-2.5 py-1 rounded-full border border-gold-500/20">
+          <span className="w-1.5 h-1.5 bg-gold-400 rounded-full" />
           ADMIN PANEL
         </span>
       </div>
@@ -48,7 +48,7 @@ export default function AdminSidebar() {
               onClick={() => setOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 active
-                  ? "bg-amber-500 text-slate-900"
+                  ? "bg-gold-500 text-slate-900"
                   : "text-slate-400 hover:bg-slate-800 hover:text-white"
               }`}
             >

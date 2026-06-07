@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export default function AdminOverviewPage() {
 
   const stats = [
     { label: "Total Affiliates", value: data?.totalAffiliates ?? 0, color: "text-blue-600", link: "/admin/affiliates" },
-    { label: "Pending Approvals", value: data?.pendingAffiliates ?? 0, color: "text-amber-600", link: "/admin/affiliates" },
+    { label: "Pending Approvals", value: data?.pendingAffiliates ?? 0, color: "text-gold-600", link: "/admin/affiliates" },
     { label: "Total Sales", value: formatCurrency(data?.totalSalesAmount ?? 0), color: "text-green-600", link: "/admin/sales" },
     { label: "Total Commissions", value: formatCurrency(data?.totalCommissions ?? 0), color: "text-purple-600", link: "/admin/sales" },
     { label: "Pending Withdrawals", value: data?.pendingWithdrawals ?? 0, color: "text-red-600", link: "/admin/withdrawals" },
@@ -54,7 +54,7 @@ export default function AdminOverviewPage() {
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
           <h2 className="font-bold text-slate-900">Recent Sales</h2>
-          <Link href="/admin/sales" className="text-amber-600 hover:text-amber-500 text-sm font-semibold">
+          <Link href="/admin/sales" className="text-gold-600 hover:text-gold-500 text-sm font-semibold">
             Log a Sale →
           </Link>
         </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -75,7 +75,7 @@ export default function LoginPage() {
                 required
                 value={form.username}
                 onChange={(e) => setForm({ ...form, username: e.target.value })}
-                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
                 placeholder="Enter your username"
               />
             </div>
@@ -88,7 +88,7 @@ export default function LoginPage() {
                 required
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
-                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
                 placeholder="Enter your password"
               />
             </div>
@@ -96,7 +96,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors mt-2"
+              className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors mt-2"
             >
               {loading ? "Signing in..." : "Sign In"}
             </button>
@@ -104,7 +104,7 @@ export default function LoginPage() {
 
           <p className="text-center text-slate-500 text-sm mt-6">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-amber-600 font-semibold hover:text-amber-500">
+            <Link href="/register" className="text-gold-600 font-semibold hover:text-gold-500">
               Create an account
             </Link>
           </p>

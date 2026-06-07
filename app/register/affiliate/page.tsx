@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
@@ -48,7 +48,7 @@ export default function AffiliateRegisterPage() {
           <p className="text-slate-500 mb-6 leading-relaxed">
             Your affiliate application has been submitted. An admin will review and approve your account. You will be able to login once approved.
           </p>
-          <Link href="/login" className="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors">
+          <Link href="/login" className="inline-block bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors">
             Go to Login
           </Link>
         </div>
@@ -94,7 +94,7 @@ export default function AffiliateRegisterPage() {
                 required
                 value={form.paymentMethod}
                 onChange={(e) => update("paymentMethod", e.target.value)}
-                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
               >
                 <option value="">Select payment method</option>
                 {PAYMENT_METHODS.map((m) => <option key={m} value={m}>{m}</option>)}
@@ -119,7 +119,7 @@ export default function AffiliateRegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
+              className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
             >
               {loading ? "Submitting…" : "Submit Application"}
             </button>
@@ -127,7 +127,7 @@ export default function AffiliateRegisterPage() {
 
           <p className="text-center text-slate-500 text-sm mt-6">
             Already registered?{" "}
-            <Link href="/login" className="text-amber-600 font-semibold hover:text-amber-500">Sign in here</Link>
+            <Link href="/login" className="text-gold-600 font-semibold hover:text-gold-500">Sign in here</Link>
           </p>
         </div>
 
@@ -151,7 +151,7 @@ function Field({ label, value, onChange, placeholder, type = "text" }: {
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={label.includes("*")}
-        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent placeholder:text-slate-400"
+        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder:text-slate-400"
       />
     </div>
   );

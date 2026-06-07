@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import Logo from "@/components/Logo";
 
 const AVATAR_COLORS = [
-  "bg-amber-500", "bg-blue-500", "bg-green-500",
+  "bg-gold-500", "bg-blue-500", "bg-green-500",
   "bg-purple-500", "bg-rose-500", "bg-teal-500",
 ];
 

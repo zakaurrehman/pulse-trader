@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 
 type PaymentRequest = {
@@ -18,7 +18,7 @@ type PaymentRequest = {
 };
 
 const STATUS_COLORS = {
-  PENDING:   "bg-amber-100 text-amber-700",
+  PENDING:   "bg-gold-100 text-gold-700",
   CONFIRMED: "bg-green-100 text-green-700",
   REJECTED:  "bg-red-100 text-red-700",
 };
@@ -167,7 +167,7 @@ export default function AdminPaymentsPage() {
         <div className="space-y-4">
           {displayed.map((r) => (
             <div key={r.id} className={`bg-white rounded-2xl border shadow-sm p-5 ${
-              r.status === "PENDING" ? "border-amber-200" : "border-slate-200"
+              r.status === "PENDING" ? "border-gold-200" : "border-slate-200"
             }`}>
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
@@ -181,7 +181,7 @@ export default function AdminPaymentsPage() {
                   {r.phone && <p className="text-slate-400 text-xs mt-0.5">{r.phone} {r.country ? `· ${r.country}` : ""}</p>}
                 </div>
                 <div className="text-right">
-                  <p className="text-amber-500 font-black text-xl">${r.amount.toFixed(2)}</p>
+                  <p className="text-gold-500 font-black text-xl">${r.amount.toFixed(2)}</p>
                   <p className="text-slate-500 text-sm">{r.service}</p>
                   <p className="text-slate-400 text-xs mt-0.5">{new Date(r.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</p>
                 </div>

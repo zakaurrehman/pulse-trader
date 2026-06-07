@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth";
+﻿import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
@@ -33,7 +33,7 @@ export default async function LearnPage() {
           </p>
           <Link
             href="/order"
-            className="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-colors"
+            className="inline-block bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-colors"
           >
             Browse Courses
           </Link>
@@ -44,17 +44,17 @@ export default async function LearnPage() {
             <Link
               key={course.id}
               href={`/learn/${course.id}`}
-              className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:border-amber-400 hover:shadow-md transition-all group"
+              className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:border-gold-400 hover:shadow-md transition-all group"
             >
               <div className="flex items-start justify-between mb-3">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-xl flex items-center justify-center text-2xl">
                   🎬
                 </div>
                 <span className="text-xs bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-full">
                   Enrolled
                 </span>
               </div>
-              <h3 className="font-black text-slate-900 text-lg mb-1 group-hover:text-amber-600 transition-colors">
+              <h3 className="font-black text-slate-900 text-lg mb-1 group-hover:text-gold-600 transition-colors">
                 {course.name}
               </h3>
               {course.description && (
@@ -64,7 +64,7 @@ export default async function LearnPage() {
                 <span className="text-slate-400">
                   {course._count.videos} lesson{course._count.videos !== 1 ? "s" : ""}
                 </span>
-                <span className="text-amber-600 font-semibold group-hover:underline">
+                <span className="text-gold-600 font-semibold group-hover:underline">
                   Start watching →
                 </span>
               </div>

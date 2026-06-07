@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 
 export default function ReferralPage() {
@@ -37,8 +37,8 @@ export default function ReferralPage() {
           <div className="h-12 bg-slate-100 rounded" />
         </div>
       ) : !code ? (
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
-          <p className="text-amber-700 font-semibold">Your referral link will appear here once your account is approved.</p>
+        <div className="bg-gold-50 border border-gold-200 rounded-2xl p-6 text-center">
+          <p className="text-gold-700 font-semibold">Your referral link will appear here once your account is approved.</p>
         </div>
       ) : (
         <>
@@ -46,11 +46,11 @@ export default function ReferralPage() {
           <div className="bg-slate-900 rounded-2xl p-6 mb-6">
             <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-3">Your Unique Referral Link</p>
             <div className="bg-slate-800 rounded-xl p-4 flex items-center gap-3 mb-4">
-              <p className="text-amber-400 font-mono text-sm flex-1 break-all">{referralUrl}</p>
+              <p className="text-gold-400 font-mono text-sm flex-1 break-all">{referralUrl}</p>
             </div>
             <button
               onClick={() => handleCopy(referralUrl!)}
-              className="w-full bg-amber-500 hover:bg-amber-400 text-slate-900 font-black py-3 rounded-xl transition-colors"
+              className="w-full bg-gold-500 hover:bg-gold-400 text-slate-900 font-black py-3 rounded-xl transition-colors"
             >
               {copied ? "✓ Copied!" : "Copy Link"}
             </button>
@@ -83,7 +83,7 @@ export default function ReferralPage() {
                 { num: "4", title: "Request withdrawal", desc: "When ready, submit a withdrawal request from your dashboard." },
               ].map((step) => (
                 <div key={step.num} className="flex gap-4">
-                  <span className="w-7 h-7 bg-amber-500 text-slate-900 font-black text-sm rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="w-7 h-7 bg-gold-500 text-slate-900 font-black text-sm rounded-full flex items-center justify-center flex-shrink-0">
                     {step.num}
                   </span>
                   <div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
 import { StarRating } from "@/components/StarRating";
@@ -62,7 +62,7 @@ export default function AdminReviewsPage() {
             key={s}
             onClick={() => setFilter(s)}
             className={`p-4 rounded-2xl border text-left transition-all ${
-              filter === s ? "border-amber-400 bg-amber-50" : "border-slate-200 bg-white hover:shadow-sm"
+              filter === s ? "border-gold-400 bg-gold-50" : "border-slate-200 bg-white hover:shadow-sm"
             }`}
           >
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">{s}</p>

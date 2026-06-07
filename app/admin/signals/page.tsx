@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 
 type SignalStat = {
@@ -11,7 +11,7 @@ type SignalStat = {
 };
 
 const PAIR_COLORS: Record<string, string> = {
-  "XAU/USD": "bg-amber-500",
+  "XAU/USD": "bg-gold-500",
   "EUR/USD": "bg-blue-500",
   "GBP/USD": "bg-purple-500",
   "USD/JPY": "bg-rose-500",
@@ -93,7 +93,7 @@ export default function AdminSignalsPage() {
                   max="100"
                   value={stat.winRate}
                   onChange={(e) => update(stat.id, "winRate", e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
               <div>
@@ -105,7 +105,7 @@ export default function AdminSignalsPage() {
                   min="0"
                   value={stat.totalSignals}
                   onChange={(e) => update(stat.id, "totalSignals", e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
               <div>
@@ -117,7 +117,7 @@ export default function AdminSignalsPage() {
                   value={stat.profitPips}
                   onChange={(e) => update(stat.id, "profitPips", e.target.value)}
                   placeholder="+4,230"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
               <div>
@@ -129,7 +129,7 @@ export default function AdminSignalsPage() {
                   value={stat.barValues}
                   onChange={(e) => update(stat.id, "barValues", e.target.value)}
                   placeholder="80,95,85,100,90,88,92"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function AdminSignalsPage() {
                 return (
                   <div
                     key={i}
-                    className="flex-1 bg-amber-500/60 rounded-sm"
+                    className="flex-1 bg-gold-500/60 rounded-sm"
                     style={{ height: `${h}%` }}
                   />
                 );
@@ -151,7 +151,7 @@ export default function AdminSignalsPage() {
             <button
               onClick={() => save(stat)}
               disabled={saving === stat.id}
-              className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 font-bold text-sm px-6 py-2.5 rounded-lg transition-colors"
+              className="bg-gold-500 hover:bg-gold-400 disabled:opacity-50 text-slate-900 font-bold text-sm px-6 py-2.5 rounded-lg transition-colors"
             >
               {saving === stat.id ? "Saving…" : "Save Changes"}
             </button>

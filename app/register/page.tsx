@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
@@ -67,7 +67,7 @@ export default function StudentRegisterPage() {
           </p>
           <Link
             href="/login"
-            className="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
+            className="inline-block bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
           >
             Go to Login
           </Link>
@@ -124,7 +124,7 @@ export default function StudentRegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
+              className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
             >
               {loading ? "Creating account…" : "Start Learning Now"}
             </button>
@@ -132,7 +132,7 @@ export default function StudentRegisterPage() {
 
           <p className="text-center text-slate-500 text-sm mt-6">
             Already have an account?{" "}
-            <Link href="/login" className="text-amber-600 font-semibold hover:text-amber-500">
+            <Link href="/login" className="text-gold-600 font-semibold hover:text-gold-500">
               Sign in here
             </Link>
           </p>
@@ -158,7 +158,7 @@ function Field({ label, value, onChange, placeholder, type = "text" }: {
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={label.includes("*")}
-        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent placeholder:text-slate-400"
+        className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder:text-slate-400"
       />
     </div>
   );

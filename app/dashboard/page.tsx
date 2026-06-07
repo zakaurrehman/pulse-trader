@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ export default function DashboardPage() {
   const statCards = [
     { label: "Total Sales Generated", value: formatCurrency(stats?.totalSales ?? 0), sub: `${stats?.salesCount ?? 0} sales`, color: "text-blue-600" },
     { label: "Earned Commissions", value: formatCurrency(stats?.earnedCommissions ?? 0), sub: "50% of each sale", color: "text-green-600" },
-    { label: "Available Balance", value: formatCurrency(stats?.availableBalance ?? 0), sub: "Ready to withdraw", color: "text-amber-600" },
+    { label: "Available Balance", value: formatCurrency(stats?.availableBalance ?? 0), sub: "Ready to withdraw", color: "text-gold-600" },
     { label: "Withdrawn", value: formatCurrency(stats?.withdrawnAmount ?? 0), sub: "Total paid out", color: "text-slate-600" },
   ];
 
@@ -47,13 +47,13 @@ export default function DashboardPage() {
         <div className="bg-slate-900 rounded-2xl p-5 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Your Referral Link</p>
-            <p className="text-amber-400 font-mono text-sm break-all">
+            <p className="text-gold-400 font-mono text-sm break-all">
               {appUrl}/api/ref/{stats.referralCode}
             </p>
           </div>
           <button
             onClick={() => navigator.clipboard.writeText(`${appUrl}/api/ref/${stats?.referralCode}`)}
-            className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors flex-shrink-0"
+            className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-colors flex-shrink-0"
           >
             Copy Link
           </button>

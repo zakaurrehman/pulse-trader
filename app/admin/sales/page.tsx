@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
@@ -107,7 +107,7 @@ export default function SalesPage() {
                   required
                   value={form.affiliateId}
                   onChange={(e) => update("affiliateId", e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500"
                 >
                   <option value="">Select affiliate</option>
                   {affiliates.map((a) => (
@@ -126,7 +126,7 @@ export default function SalesPage() {
                   value={form.clientName}
                   onChange={(e) => update("clientName", e.target.value)}
                   placeholder="Client full name"
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
 
@@ -137,7 +137,7 @@ export default function SalesPage() {
                   value={form.clientEmail}
                   onChange={(e) => update("clientEmail", e.target.value)}
                   placeholder="client@email.com"
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
 
@@ -153,7 +153,7 @@ export default function SalesPage() {
                     value={form.amount}
                     onChange={(e) => update("amount", e.target.value)}
                     placeholder="0.00"
-                    className="w-full border border-slate-300 rounded-lg pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border border-slate-300 rounded-lg pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                 </div>
                 {form.amount && (
@@ -170,14 +170,14 @@ export default function SalesPage() {
                   onChange={(e) => update("description", e.target.value)}
                   placeholder="e.g. 3-month trading course"
                   rows={3}
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
+                className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
               >
                 {submitting ? "Logging..." : "Log Sale & Credit Commission"}
               </button>
