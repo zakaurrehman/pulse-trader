@@ -38,6 +38,23 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
     setTimeout(() => setToast(""), 3500);
   }
 
+  // macOS screen recordings (and other files) can contain spaces and special
+  // unicode characters (e.g. U+202F narrow no-break space) that break the
+  // upload request. Convert the name to a safe, ASCII-only slug + extension.
+  function safeFileName(name: string) {
+    const lastDot = name.lastIndexOf(".");
+    const ext = lastDot >= 0 ? name.slice(lastDot + 1).toLowerCase().replace(/[^a-z0-9]/g, "") : "mp4";
+    const base = lastDot >= 0 ? name.slice(0, lastDot) : name;
+    const slug =
+      base
+        .normalize("NFKD")              // decompose unicode (narrow nbsp -> space)
+        .replace(/[^a-zA-Z0-9]+/g, "-") // any non-alphanumeric run -> single dash
+        .replace(/-+/g, "-")            // collapse repeated dashes
+        .replace(/^-|-$/g, "")          // trim leading/trailing dashes
+        .toLowerCase() || "video";
+    return `${slug}-${Date.now()}.${ext}`;
+  }
+
   const load = useCallback(async () => {
     setLoading(true);
     const [vRes, cRes] = await Promise.all([
@@ -60,7 +77,8 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
     setUploading(true);
     setProgress(0);
     try {
-      const blob = await upload(file.name, file, {
+      const uploadName = safeFileName(file.name);
+      const blob = await upload(uploadName, file, {
         access: "public",
         handleUploadUrl: "/api/admin/videos/upload",
         multipart: true,
