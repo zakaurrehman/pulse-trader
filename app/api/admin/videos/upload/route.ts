@@ -10,6 +10,10 @@ export async function POST(request: Request): Promise<NextResponse> {
     const jsonResponse = await handleUpload({
       body,
       request,
+      // Trim the token: a stray trailing space/newline in the env var doesn't
+      // break server-side requests (headers get trimmed) but DOES break the
+      // client token's HMAC signature, causing 403 on the browser upload.
+      token: process.env.BLOB_READ_WRITE_TOKEN?.trim(),
       onBeforeGenerateToken: async () => {
         const session = await getServerSession(authOptions);
         if (!session || (session.user as { role?: string }).role !== "ADMIN") {
