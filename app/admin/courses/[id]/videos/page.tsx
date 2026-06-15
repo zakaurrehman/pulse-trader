@@ -81,7 +81,6 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
       const blob = await upload(uploadName, file, {
         access: "public",
         handleUploadUrl: "/api/admin/videos/upload",
-        multipart: true,
         onUploadProgress: ({ percentage }) => setProgress(Math.round(percentage)),
       });
 
