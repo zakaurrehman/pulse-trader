@@ -164,6 +164,7 @@ export default function OrderForm({
                 <div className="bg-white rounded-xl border border-gold-200 p-4">
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">WhatsApp / Contact</p>
                   <p className="text-sm text-slate-700">Message us on WhatsApp: <a href="https://wa.me/923066062012" target="_blank" rel="noopener noreferrer" className="text-gold-600 font-semibold hover:underline">+92 306 6062012</a></p>
+                  <p className="text-sm text-slate-700 mt-1">Or: <a href="https://wa.me/447386847811" target="_blank" rel="noopener noreferrer" className="text-gold-600 font-semibold hover:underline">+44 7386 847811</a></p>
                 </div>
               </div>
               <p className="text-xs text-slate-500 mt-3">
