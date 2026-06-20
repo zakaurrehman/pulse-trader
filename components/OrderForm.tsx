@@ -146,6 +146,16 @@ export default function OrderForm({
               </p>
               <div className="space-y-3">
                 <div className="bg-white rounded-xl border border-gold-200 p-4">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">USDT — TRC20 (TRON Network)</p>
+                  <p className="text-sm text-slate-700 font-medium mb-1">Wallet Address:</p>
+                  <p className="text-sm text-slate-900 font-mono break-all bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 select-all">
+                    THAtY2esJP9md25m73xmtUxAumPBobRkA1
+                  </p>
+                  <p className="text-xs text-red-600 mt-2 font-medium">
+                    ⚠️ Only send USDT on the TRON (TRC20) network to this address. Funds sent on any other network will be lost.
+                  </p>
+                </div>
+                <div className="bg-white rounded-xl border border-gold-200 p-4">
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Bank Transfer</p>
                   <p className="text-sm text-slate-700 font-medium">Bank Name: <span className="text-slate-500">[Your Bank Name]</span></p>
                   <p className="text-sm text-slate-700 font-medium">Account Number: <span className="text-slate-500">[Your Account Number]</span></p>
