@@ -195,6 +195,57 @@ export default async function LandingPage() {
                 </Link>
               </div>
             ))}
+
+            {/* Trading Bot Integration — done-for-you bot setup handled by support, not automated */}
+            <div className="relative rounded-2xl p-6 flex flex-col border transition-all hover:-translate-y-1 bg-slate-800 border-gold-500/40 hover:border-gold-500/70">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-black px-3 py-1 rounded-full whitespace-nowrap bg-gold-500 text-slate-900">
+                Done-For-You
+              </div>
+              <div className="mb-4">
+                <h3 className="font-bold text-lg mb-1 text-white flex items-center gap-2">
+                  <span>🤖</span> Trading Bot Integration
+                </h3>
+                <p className="text-sm mb-3 leading-relaxed text-slate-400">
+                  Let our team install and configure your automated trading bot for you — set up personally by an expert, not left to guesswork.
+                </p>
+                <div className="mt-1">
+                  <span className="text-3xl font-black text-gold-400">$149.00</span>
+                  <span className="text-sm ml-1 text-slate-500">/one-time</span>
+                </div>
+              </div>
+              <ul className="space-y-2.5 flex-1 mb-5">
+                {[
+                  "Trading bot installation & activation",
+                  "Connected to your trading account",
+                  "Strategy & risk settings configured",
+                  "Live test + guided go-live",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <span className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold bg-gold-500/20 text-gold-400">✓</span>
+                    <span className="text-sm text-slate-400">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3 mb-4">
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  <span className="font-bold text-white">Need help integrating your bot?</span> Contact our support team for integration assistance.
+                </p>
+                <p className="text-xs text-slate-500 mt-2">
+                  WhatsApp / Call:{" "}
+                  <a href="https://wa.me/447386847811" target="_blank" rel="noopener noreferrer" className="text-gold-400 font-semibold hover:underline">
+                    +44 7386 847811
+                  </a>
+                </p>
+              </div>
+              <a
+                href="https://wa.me/447386847811?text=Hi%2C%20I%27d%20like%20help%20integrating%20my%20trading%20bot%20%28%24149%20Bot%20Integration%29."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 rounded-xl font-bold text-sm transition-all mt-auto bg-gold-500 hover:bg-gold-400 text-slate-900"
+              >
+                Contact Support · Chat with Us
+              </a>
+            </div>
           </div>
         </div>
       </section>
