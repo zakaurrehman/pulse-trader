@@ -17,6 +17,10 @@ export default function VideoPlayer({ url }: { url: string }) {
       controls
       className="w-full aspect-video bg-black"
       preload="metadata"
+      controlsList="nodownload noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      onContextMenu={(e) => e.preventDefault()}
     >
       <source src={url} />
       Your browser does not support video playback.
