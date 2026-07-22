@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import Logo from "@/components/Logo";
+import CleanHashLinks from "@/components/CleanHashLinks";
 
 const AVATAR_COLORS = [
   "bg-gold-500", "bg-blue-500", "bg-green-500",
@@ -34,6 +35,8 @@ export default async function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Smooth-scroll in-page nav without leaving #fragments in the URL */}
+      <CleanHashLinks />
       {/* Navbar */}
       <nav className="bg-slate-900 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
