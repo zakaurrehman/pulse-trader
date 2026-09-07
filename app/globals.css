@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Legacy gold scale — kept for compatibility with any untouched screens */
   --color-gold-50: #fdf8e7;
   --color-gold-100: #fbefc4;
   --color-gold-200: #f5de8a;
@@ -11,6 +12,20 @@
   --color-gold-700: #917508;
   --color-gold-800: #6e5906;
   --color-gold-900: #4f3f04;
+
+  /* Dominators Club — Premium Color System */
+  --color-void: #070A0F;        /* primary background */
+  --color-abyss: #0D1117;       /* secondary background */
+  --color-panel: #11161D;       /* card background */
+
+  --color-ink: #F5F5F0;         /* primary text */
+  --color-mist: #A7AFBD;        /* secondary text */
+  --color-fog: #6B7280;         /* muted text */
+
+  --color-gold-highlight: #F4D77A; /* accent highlight */
+  --color-gold-dark: #9C7A16;      /* accent dark */
+
+  --color-hairline: rgba(212, 175, 55, 0.20); /* standard border */
 }
 
 * {
@@ -18,6 +33,6 @@
 }
 
 body {
-  background: #f8fafc;
-  color: #0f172a;
+  background: #070A0F;
+  color: #F5F5F0;
 }
