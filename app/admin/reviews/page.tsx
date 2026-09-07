@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
 import { StarRating } from "@/components/StarRating";
@@ -43,16 +43,16 @@ export default function AdminReviewsPage() {
   const filtered = filter === "ALL" ? reviews : reviews.filter((r) => r.status === filter);
 
   const statusColors: Record<string, string> = {
-    PENDING: "bg-yellow-100 text-yellow-700",
-    APPROVED: "bg-green-100 text-green-700",
-    REJECTED: "bg-red-100 text-red-700",
+    PENDING: "bg-yellow-500/15 text-yellow-400",
+    APPROVED: "bg-green-500/15 text-green-400",
+    REJECTED: "bg-red-500/15 text-red-400",
   };
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-2xl font-black text-slate-900">Client Reviews</h1>
-        <p className="text-slate-500 mt-1">Approve or reject client reviews before they go public</p>
+        <h1 className="text-2xl font-black text-ink">Client Reviews</h1>
+        <p className="text-mist mt-1">Approve or reject client reviews before they go public</p>
       </div>
 
       {/* Counts */}
@@ -62,11 +62,11 @@ export default function AdminReviewsPage() {
             key={s}
             onClick={() => setFilter(s)}
             className={`p-4 rounded-2xl border text-left transition-all ${
-              filter === s ? "border-gold-400 bg-gold-50" : "border-slate-200 bg-white hover:shadow-sm"
+              filter === s ? "border-gold-500 bg-gold-500/10" : "border-hairline bg-panel hover:border-gold-500/30"
             }`}
           >
-            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">{s}</p>
-            <p className="text-2xl font-black text-slate-900">{reviews.filter((r) => r.status === s).length}</p>
+            <p className="text-fog text-xs font-semibold uppercase tracking-wider mb-1">{s}</p>
+            <p className="text-2xl font-black text-ink">{reviews.filter((r) => r.status === s).length}</p>
           </button>
         ))}
       </div>
@@ -78,7 +78,7 @@ export default function AdminReviewsPage() {
             key={f}
             onClick={() => setFilter(f)}
             className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
-              filter === f ? "bg-slate-900 text-white" : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+              filter === f ? "bg-gold-500 text-void" : "bg-panel text-mist border border-hairline hover:bg-abyss"
             }`}
           >
             {f}
@@ -87,41 +87,41 @@ export default function AdminReviewsPage() {
       </div>
 
       {loading ? (
-        <div className="p-10 text-center text-slate-400">Loading...</div>
+        <div className="p-10 text-center text-fog">Loading...</div>
       ) : !filtered.length ? (
-        <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center text-slate-400 text-sm">
+        <div className="bg-panel rounded-2xl border border-hairline p-10 text-center text-fog text-sm">
           No reviews in this category.
         </div>
       ) : (
         <div className="space-y-4">
           {filtered.map((review) => (
-            <div key={review.id} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div key={review.id} className="bg-panel rounded-2xl border border-hairline shadow-sm p-6">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <p className="font-bold text-slate-900">{review.clientName}</p>
+                    <p className="font-bold text-ink">{review.clientName}</p>
                     <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${statusColors[review.status]}`}>
                       {review.status}
                     </span>
                   </div>
-                  {review.email && <p className="text-slate-400 text-xs mb-2">{review.email}</p>}
+                  {review.email && <p className="text-fog text-xs mb-2">{review.email}</p>}
                   <StarRating rating={review.rating} />
-                  <p className="text-slate-600 text-sm mt-3 leading-relaxed">{review.content}</p>
+                  <p className="text-mist text-sm mt-3 leading-relaxed">{review.content}</p>
                   {review.imageUrl && (
                     <img
                       src={review.imageUrl}
                       alt="Review attachment"
-                      className="mt-3 rounded-lg max-h-48 object-cover border border-slate-200"
+                      className="mt-3 rounded-lg max-h-48 object-cover border border-hairline"
                     />
                   )}
-                  <p className="text-slate-400 text-xs mt-3">{formatDate(review.createdAt)}</p>
+                  <p className="text-fog text-xs mt-3">{formatDate(review.createdAt)}</p>
                 </div>
                 <div className="flex flex-col gap-2 flex-shrink-0">
                   {review.status !== "APPROVED" && (
                     <button
                       onClick={() => updateStatus(review.id, "APPROVED")}
                       disabled={updating === review.id}
-                      className="bg-green-100 hover:bg-green-200 text-green-700 font-semibold text-xs px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+                      className="bg-green-500/15 hover:bg-green-500/25 text-green-400 font-semibold text-xs px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
                     >
                       Approve
                     </button>
@@ -130,7 +130,7 @@ export default function AdminReviewsPage() {
                     <button
                       onClick={() => updateStatus(review.id, "REJECTED")}
                       disabled={updating === review.id}
-                      className="bg-red-100 hover:bg-red-200 text-red-700 font-semibold text-xs px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+                      className="bg-red-500/15 hover:bg-red-500/25 text-red-400 font-semibold text-xs px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
                     >
                       Reject
                     </button>

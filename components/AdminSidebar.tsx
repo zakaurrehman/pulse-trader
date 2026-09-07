@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -22,18 +22,18 @@ export default function AdminSidebar() {
 
   const NavContent = () => (
     <div className="flex flex-col h-full">
-      <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+      <div className="p-5 border-b border-hairline flex items-center justify-between">
         <Link href="/admin" onClick={() => setOpen(false)}>
           <Logo height={38} />
         </Link>
-        <button onClick={() => setOpen(false)} className="md:hidden text-slate-400 hover:text-white p-1">
+        <button onClick={() => setOpen(false)} className="md:hidden text-mist hover:text-ink p-1">
           ✕
         </button>
       </div>
 
-      <div className="px-5 py-4 border-b border-slate-800">
-        <span className="inline-flex items-center gap-1.5 bg-gold-500/10 text-gold-400 text-xs font-bold px-2.5 py-1 rounded-full border border-gold-500/20">
-          <span className="w-1.5 h-1.5 bg-gold-400 rounded-full" />
+      <div className="px-5 py-4 border-b border-hairline">
+        <span className="inline-flex items-center gap-1.5 bg-gold-500/10 text-gold-highlight text-xs font-bold px-2.5 py-1 rounded-full border border-hairline">
+          <span className="w-1.5 h-1.5 bg-gold-highlight rounded-full" />
           ADMIN PANEL
         </span>
       </div>
@@ -48,8 +48,8 @@ export default function AdminSidebar() {
               onClick={() => setOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 active
-                  ? "bg-gold-500 text-slate-900"
-                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                  ? "bg-gold-500 text-void"
+                  : "text-mist hover:bg-panel hover:text-ink"
               }`}
             >
               <span>{link.icon}</span>
@@ -59,10 +59,10 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
+      <div className="p-4 border-t border-hairline">
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-mist hover:bg-panel hover:text-ink transition-all"
         >
           <span>🚪</span>
           Sign Out
@@ -74,11 +74,11 @@ export default function AdminSidebar() {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-slate-900 h-14 flex items-center justify-between px-4 shadow-lg">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-abyss border-b border-hairline h-14 flex items-center justify-between px-4 shadow-lg">
         <Logo height={30} />
         <button
           onClick={() => setOpen(true)}
-          className="text-slate-300 hover:text-white p-2"
+          className="text-mist hover:text-ink p-2"
           aria-label="Open menu"
         >
           <div className="space-y-1.5">
@@ -94,14 +94,14 @@ export default function AdminSidebar() {
       )}
 
       <div
-        className={`md:hidden fixed top-0 left-0 h-full w-72 bg-slate-900 z-50 transform transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 left-0 h-full w-72 bg-abyss border-r border-hairline z-50 transform transition-transform duration-300 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <NavContent />
       </div>
 
-      <aside className="hidden md:flex w-64 bg-slate-900 flex-col h-full flex-shrink-0">
+      <aside className="hidden md:flex w-64 bg-abyss border-r border-hairline flex-col h-full flex-shrink-0">
         <NavContent />
       </aside>
     </>

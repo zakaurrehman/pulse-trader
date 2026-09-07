@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
@@ -79,35 +79,35 @@ export default function SalesPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-2xl font-black text-slate-900">Log a Sale</h1>
-        <p className="text-slate-500 mt-1">Record a client purchase to credit 50% commission to the affiliate</p>
+        <h1 className="text-2xl font-black text-ink">Log a Sale</h1>
+        <p className="text-mist mt-1">Record a client purchase to credit 50% commission to the affiliate</p>
       </div>
 
       <div className="grid lg:grid-cols-5 gap-6">
         {/* Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h2 className="font-bold text-slate-900 mb-5">New Sale</h2>
+          <div className="bg-panel rounded-2xl border border-hairline shadow-sm p-6">
+            <h2 className="font-bold text-ink mb-5">New Sale</h2>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg mb-4">
+              <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-lg mb-4">
                 {error}
               </div>
             )}
             {success && (
-              <div className="bg-green-50 border border-green-200 text-green-700 text-sm px-4 py-3 rounded-lg mb-4">
+              <div className="bg-green-500/10 border border-green-500/30 text-green-400 text-sm px-4 py-3 rounded-lg mb-4">
                 {success}
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Affiliate *</label>
+                <label className="block text-sm font-semibold text-mist mb-1.5">Affiliate *</label>
                 <select
                   required
                   value={form.affiliateId}
                   onChange={(e) => update("affiliateId", e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full bg-abyss border border-hairline rounded-lg px-3.5 py-2.5 text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
                 >
                   <option value="">Select affiliate</option>
                   {affiliates.map((a) => (
@@ -119,32 +119,32 @@ export default function SalesPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Client Name *</label>
+                <label className="block text-sm font-semibold text-mist mb-1.5">Client Name *</label>
                 <input
                   type="text"
                   required
                   value={form.clientName}
                   onChange={(e) => update("clientName", e.target.value)}
                   placeholder="Client full name"
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full bg-abyss border border-hairline rounded-lg px-3.5 py-2.5 text-ink placeholder:text-fog focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Client Email</label>
+                <label className="block text-sm font-semibold text-mist mb-1.5">Client Email</label>
                 <input
                   type="email"
                   value={form.clientEmail}
                   onChange={(e) => update("clientEmail", e.target.value)}
                   placeholder="client@email.com"
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full bg-abyss border border-hairline rounded-lg px-3.5 py-2.5 text-ink placeholder:text-fog focus:outline-none focus:ring-2 focus:ring-gold-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Sale Amount (USD) *</label>
+                <label className="block text-sm font-semibold text-mist mb-1.5">Sale Amount (USD) *</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-fog font-bold">$</span>
                   <input
                     type="number"
                     required
@@ -153,31 +153,31 @@ export default function SalesPage() {
                     value={form.amount}
                     onChange={(e) => update("amount", e.target.value)}
                     placeholder="0.00"
-                    className="w-full border border-slate-300 rounded-lg pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                    className="w-full bg-abyss border border-hairline rounded-lg pl-8 pr-4 py-2.5 text-ink placeholder:text-fog focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                 </div>
                 {form.amount && (
-                  <p className="text-green-600 text-xs mt-1 font-semibold">
+                  <p className="text-green-400 text-xs mt-1 font-semibold">
                     Commission to credit: {formatCurrency(parseFloat(form.amount || "0") * 0.5)}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Description / Notes</label>
+                <label className="block text-sm font-semibold text-mist mb-1.5">Description / Notes</label>
                 <textarea
                   value={form.description}
                   onChange={(e) => update("description", e.target.value)}
                   placeholder="e.g. 3-month trading course"
                   rows={3}
-                  className="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500 resize-none"
+                  className="w-full bg-abyss border border-hairline rounded-lg px-3.5 py-2.5 text-ink placeholder:text-fog focus:outline-none focus:ring-2 focus:ring-gold-500 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-gold-500 hover:bg-gold-400 disabled:opacity-60 text-slate-900 font-black py-3 rounded-lg transition-colors"
+                className="w-full bg-gold-500 hover:bg-gold-highlight disabled:opacity-60 text-void font-black py-3 rounded-lg transition-colors"
               >
                 {submitting ? "Logging..." : "Log Sale & Credit Commission"}
               </button>
@@ -187,39 +187,39 @@ export default function SalesPage() {
 
         {/* Sales table */}
         <div className="lg:col-span-3">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-100">
-              <h2 className="font-bold text-slate-900">All Sales ({sales.length})</h2>
+          <div className="bg-panel rounded-2xl border border-hairline shadow-sm overflow-hidden">
+            <div className="px-5 py-4 border-b border-hairline">
+              <h2 className="font-bold text-ink">All Sales ({sales.length})</h2>
             </div>
             {loading ? (
-              <div className="p-8 text-center text-slate-400">Loading...</div>
+              <div className="p-8 text-center text-fog">Loading...</div>
             ) : !sales.length ? (
-              <div className="p-10 text-center text-slate-400 text-sm">No sales yet.</div>
+              <div className="p-10 text-center text-fog text-sm">No sales yet.</div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-slate-50">
+                  <thead className="bg-abyss">
                     <tr>
                       {["Client", "Affiliate", "Amount", "Commission", "Date"].map((h) => (
-                        <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-fog uppercase tracking-wider">
                           {h}
                         </th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-hairline">
                     {sales.map((s) => (
-                      <tr key={s.id} className="hover:bg-slate-50">
+                      <tr key={s.id} className="hover:bg-abyss">
                         <td className="px-4 py-4">
-                          <p className="font-semibold text-slate-800 text-sm">{s.clientName}</p>
-                          {s.clientEmail && <p className="text-slate-400 text-xs">{s.clientEmail}</p>}
+                          <p className="font-semibold text-ink text-sm">{s.clientName}</p>
+                          {s.clientEmail && <p className="text-fog text-xs">{s.clientEmail}</p>}
                         </td>
-                        <td className="px-4 py-4 text-slate-600 text-sm">{s.affiliate.fullName}</td>
-                        <td className="px-4 py-4 font-bold text-slate-900 text-sm">{formatCurrency(s.amount)}</td>
-                        <td className="px-4 py-4 text-green-600 font-bold text-sm">
+                        <td className="px-4 py-4 text-mist text-sm">{s.affiliate.fullName}</td>
+                        <td className="px-4 py-4 font-bold text-ink text-sm">{formatCurrency(s.amount)}</td>
+                        <td className="px-4 py-4 text-green-400 font-bold text-sm">
                           {formatCurrency(s.commission?.amount ?? s.amount * 0.5)}
                         </td>
-                        <td className="px-4 py-4 text-slate-400 text-xs">{formatDate(s.createdAt)}</td>
+                        <td className="px-4 py-4 text-fog text-xs">{formatDate(s.createdAt)}</td>
                       </tr>
                     ))}
                   </tbody>

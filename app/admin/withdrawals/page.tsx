@@ -40,10 +40,10 @@ export default function WithdrawalsPage() {
   }
 
   const statusColors: Record<string, string> = {
-    PENDING: "bg-yellow-100 text-yellow-700",
-    APPROVED: "bg-blue-100 text-blue-700",
-    PAID: "bg-green-100 text-green-700",
-    REJECTED: "bg-red-100 text-red-700",
+    PENDING: "bg-yellow-500/15 text-yellow-400",
+    APPROVED: "bg-blue-500/15 text-blue-400",
+    PAID: "bg-green-500/15 text-green-400",
+    REJECTED: "bg-red-500/15 text-red-400",
   };
 
   const filtered = filter === "ALL" ? withdrawals : withdrawals.filter((w) => w.status === filter);
@@ -52,26 +52,26 @@ export default function WithdrawalsPage() {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-2xl font-black text-slate-900">Withdrawal Requests</h1>
-        <p className="text-slate-500 mt-1">Review and process affiliate withdrawal requests</p>
+        <h1 className="text-2xl font-black text-ink">Withdrawal Requests</h1>
+        <p className="text-mist mt-1">Review and process affiliate withdrawal requests</p>
       </div>
 
       {/* Summary */}
       <div className="grid sm:grid-cols-3 gap-4 mb-6">
-        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-5">
-          <p className="text-yellow-600 text-xs font-semibold uppercase tracking-wider mb-1">Pending</p>
-          <p className="text-2xl font-black text-yellow-700">{withdrawals.filter((w) => w.status === "PENDING").length}</p>
-          <p className="text-yellow-600 text-sm mt-1">{formatCurrency(pendingTotal)} total</p>
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-5">
+          <p className="text-yellow-400 text-xs font-semibold uppercase tracking-wider mb-1">Pending</p>
+          <p className="text-2xl font-black text-yellow-400">{withdrawals.filter((w) => w.status === "PENDING").length}</p>
+          <p className="text-yellow-400/80 text-sm mt-1">{formatCurrency(pendingTotal)} total</p>
         </div>
-        <div className="bg-green-50 border border-green-200 rounded-2xl p-5">
-          <p className="text-green-600 text-xs font-semibold uppercase tracking-wider mb-1">Paid Out</p>
-          <p className="text-2xl font-black text-green-700">
+        <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-5">
+          <p className="text-green-400 text-xs font-semibold uppercase tracking-wider mb-1">Paid Out</p>
+          <p className="text-2xl font-black text-green-400">
             {formatCurrency(withdrawals.filter((w) => w.status === "PAID").reduce((s, w) => s + w.amount, 0))}
           </p>
         </div>
-        <div className="bg-white border border-slate-200 rounded-2xl p-5">
-          <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">Total Requests</p>
-          <p className="text-2xl font-black text-slate-900">{withdrawals.length}</p>
+        <div className="bg-panel border border-hairline rounded-2xl p-5">
+          <p className="text-fog text-xs font-semibold uppercase tracking-wider mb-1">Total Requests</p>
+          <p className="text-2xl font-black text-ink">{withdrawals.length}</p>
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default function WithdrawalsPage() {
             key={f}
             onClick={() => setFilter(f)}
             className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-colors ${
-              filter === f ? "bg-slate-900 text-white" : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+              filter === f ? "bg-gold-500 text-void" : "bg-panel text-mist border border-hairline hover:bg-abyss"
             }`}
           >
             {f}
@@ -90,38 +90,38 @@ export default function WithdrawalsPage() {
         ))}
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-panel rounded-2xl border border-hairline shadow-sm overflow-hidden">
         {loading ? (
-          <div className="p-10 text-center text-slate-400">Loading...</div>
+          <div className="p-10 text-center text-fog">Loading...</div>
         ) : !filtered.length ? (
-          <div className="p-10 text-center text-slate-400 text-sm">No withdrawal requests found.</div>
+          <div className="p-10 text-center text-fog text-sm">No withdrawal requests found.</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50">
+              <thead className="bg-abyss">
                 <tr>
                   {["Affiliate", "Payment Method", "Amount", "Status", "Date", "Actions"].map((h) => (
-                    <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-fog uppercase tracking-wider">
                       {h}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-hairline">
                 {filtered.map((w) => (
-                  <tr key={w.id} className="hover:bg-slate-50">
+                  <tr key={w.id} className="hover:bg-abyss">
                     <td className="px-4 py-4">
-                      <p className="font-semibold text-slate-800 text-sm">{w.affiliate.fullName}</p>
-                      <p className="text-slate-400 text-xs">@{w.affiliate.username}</p>
+                      <p className="font-semibold text-ink text-sm">{w.affiliate.fullName}</p>
+                      <p className="text-fog text-xs">@{w.affiliate.username}</p>
                     </td>
-                    <td className="px-4 py-4 text-slate-600 text-sm">{w.affiliate.paymentMethod}</td>
-                    <td className="px-4 py-4 font-black text-slate-900">{formatCurrency(w.amount)}</td>
+                    <td className="px-4 py-4 text-mist text-sm">{w.affiliate.paymentMethod}</td>
+                    <td className="px-4 py-4 font-black text-ink">{formatCurrency(w.amount)}</td>
                     <td className="px-4 py-4">
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${statusColors[w.status]}`}>
                         {w.status}
                       </span>
                     </td>
-                    <td className="px-4 py-4 text-slate-400 text-xs">{formatDate(w.createdAt)}</td>
+                    <td className="px-4 py-4 text-fog text-xs">{formatDate(w.createdAt)}</td>
                     <td className="px-4 py-4">
                       <div className="flex gap-2 flex-wrap">
                         {w.status === "PENDING" && (
@@ -129,14 +129,14 @@ export default function WithdrawalsPage() {
                             <button
                               onClick={() => updateStatus(w.id, "APPROVED")}
                               disabled={updating === w.id}
-                              className="bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+                              className="bg-blue-500/15 hover:bg-blue-500/25 text-blue-400 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
                             >
                               Approve
                             </button>
                             <button
                               onClick={() => updateStatus(w.id, "REJECTED")}
                               disabled={updating === w.id}
-                              className="bg-red-100 hover:bg-red-200 text-red-700 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+                              className="bg-red-500/15 hover:bg-red-500/25 text-red-400 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
                             >
                               Reject
                             </button>
@@ -146,7 +146,7 @@ export default function WithdrawalsPage() {
                           <button
                             onClick={() => updateStatus(w.id, "PAID")}
                             disabled={updating === w.id}
-                            className="bg-green-100 hover:bg-green-200 text-green-700 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+                            className="bg-green-500/15 hover:bg-green-500/25 text-green-400 font-semibold text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
                           >
                             Mark as Paid
                           </button>

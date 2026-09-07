@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState, useEffect, useCallback, use } from "react";
 import { upload } from "@vercel/blob/client";
 import Link from "next/link";
@@ -144,19 +144,19 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
     <div className="p-6 max-w-4xl mx-auto">
       {/* Toast */}
       {toast && (
-        <div className="fixed top-5 right-5 z-50 bg-slate-800 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-2xl border border-slate-700">
+        <div className="fixed top-5 right-5 z-50 bg-panel text-ink text-sm font-semibold px-5 py-3 rounded-xl shadow-2xl border border-hairline">
           {toast}
         </div>
       )}
 
       {/* Delete confirm */}
       {deleteId && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center">
-            <p className="text-slate-900 font-bold text-lg mb-2">Delete this video?</p>
-            <p className="text-slate-500 text-sm mb-6">The file will be permanently removed from storage.</p>
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4">
+          <div className="bg-panel border border-hairline rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center">
+            <p className="text-ink font-bold text-lg mb-2">Delete this video?</p>
+            <p className="text-mist text-sm mb-6">The file will be permanently removed from storage.</p>
             <div className="flex gap-3 justify-center">
-              <button onClick={() => setDeleteId(null)} className="px-5 py-2 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick={() => setDeleteId(null)} className="px-5 py-2 rounded-lg border border-hairline text-mist font-semibold hover:bg-abyss">Cancel</button>
               <button onClick={confirmDelete} className="px-5 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold">Delete</button>
             </div>
           </div>
@@ -165,64 +165,64 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
 
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
-        <Link href="/admin/courses" className="text-slate-400 hover:text-slate-700 text-sm font-medium">
+        <Link href="/admin/courses" className="text-fog hover:text-mist text-sm font-medium">
           ← Courses
         </Link>
-        <span className="text-slate-300">/</span>
-        <h1 className="text-xl font-black text-slate-900">{courseName || "Course"} — Videos</h1>
+        <span className="text-fog">/</span>
+        <h1 className="text-xl font-black text-ink">{courseName || "Course"} — Videos</h1>
       </div>
 
       {/* Upload form */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
-        <h2 className="font-bold text-slate-900 text-lg mb-4">Upload New Video</h2>
+      <div className="bg-panel rounded-2xl border border-hairline shadow-sm p-6 mb-6">
+        <h2 className="font-bold text-ink text-lg mb-4">Upload New Video</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Video Title *</label>
+            <label className="block text-xs font-semibold text-fog uppercase tracking-wider mb-1">Video Title *</label>
             <input
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="e.g. Introduction to Forex"
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
+              className="w-full bg-abyss border border-hairline rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
             />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Description (optional)</label>
+            <label className="block text-xs font-semibold text-fog uppercase tracking-wider mb-1">Description (optional)</label>
             <input
               value={newDesc}
               onChange={(e) => setNewDesc(e.target.value)}
               placeholder="Brief description of this lesson"
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
+              className="w-full bg-abyss border border-hairline rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
             />
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Sort Order</label>
+              <label className="block text-xs font-semibold text-fog uppercase tracking-wider mb-1">Sort Order</label>
               <input
                 type="number"
                 value={newOrder}
                 onChange={(e) => setNewOrder(parseInt(e.target.value) || 0)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
+                className="w-full bg-abyss border border-hairline rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Video File *</label>
+              <label className="block text-xs font-semibold text-fog uppercase tracking-wider mb-1">Video File *</label>
               <input
                 type="file"
                 accept="video/mp4,video/webm,video/quicktime,video/x-msvideo,video/mpeg"
                 onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                className="w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-50 file:text-gold-700 hover:file:bg-gold-100"
+                className="w-full text-sm text-mist file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500/15 file:text-gold-highlight hover:file:bg-gold-500/25"
               />
-              {file && <p className="text-xs text-slate-400 mt-1">{file.name} ({formatSize(file.size)})</p>}
+              {file && <p className="text-xs text-fog mt-1">{file.name} ({formatSize(file.size)})</p>}
             </div>
           </div>
 
           {uploading && (
             <div>
-              <div className="flex justify-between text-xs text-slate-500 mb-1">
+              <div className="flex justify-between text-xs text-fog mb-1">
                 <span>Uploading…</span>
                 <span>{progress}%</span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-2">
+              <div className="w-full bg-abyss rounded-full h-2">
                 <div
                   className="bg-gold-500 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
@@ -234,7 +234,7 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
           <button
             onClick={handleUpload}
             disabled={uploading || !file || !newTitle.trim()}
-            className="bg-gold-500 hover:bg-gold-400 disabled:opacity-50 text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
+            className="bg-gold-500 hover:bg-gold-highlight disabled:opacity-50 text-void font-bold px-6 py-2.5 rounded-xl text-sm transition-colors"
           >
             {uploading ? `Uploading ${progress}%…` : "Upload Video"}
           </button>
@@ -243,56 +243,56 @@ export default function AdminCourseVideosPage({ params }: { params: Promise<{ id
 
       {/* Video list */}
       {loading ? (
-        <div className="text-center py-16 text-slate-400">Loading videos…</div>
+        <div className="text-center py-16 text-fog">Loading videos…</div>
       ) : videos.length === 0 ? (
-        <div className="text-center py-16 text-slate-400 bg-white rounded-2xl border border-slate-200">
+        <div className="text-center py-16 text-fog bg-panel rounded-2xl border border-hairline">
           No videos yet. Upload your first lesson above.
         </div>
       ) : (
         <div className="space-y-3">
           {videos.map((v, i) => (
-            <div key={v.id} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div key={v.id} className="bg-panel rounded-2xl border border-hairline shadow-sm p-5">
               {editingId === v.id ? (
                 <div className="space-y-3">
                   <input
                     value={editForm.title}
                     onChange={(e) => setEditForm((f) => ({ ...f, title: e.target.value }))}
-                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
+                    className="w-full bg-abyss border border-hairline rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                   <input
                     value={editForm.description}
                     onChange={(e) => setEditForm((f) => ({ ...f, description: e.target.value }))}
                     placeholder="Description"
-                    className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"
+                    className="w-full bg-abyss border border-hairline rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-gold-500"
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => saveEdit(v.id)} className="bg-gold-500 hover:bg-gold-400 text-slate-900 font-bold px-4 py-1.5 rounded-lg text-sm">Save</button>
-                    <button onClick={() => setEditingId(null)} className="border border-slate-300 text-slate-700 px-4 py-1.5 rounded-lg text-sm hover:bg-slate-50">Cancel</button>
+                    <button onClick={() => saveEdit(v.id)} className="bg-gold-500 hover:bg-gold-highlight text-void font-bold px-4 py-1.5 rounded-lg text-sm">Save</button>
+                    <button onClick={() => setEditingId(null)} className="border border-hairline text-mist px-4 py-1.5 rounded-lg text-sm hover:bg-abyss">Cancel</button>
                   </div>
                 </div>
               ) : (
                 <div className="flex items-start gap-4">
-                  <span className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 text-xs font-bold flex-shrink-0">
+                  <span className="w-8 h-8 bg-abyss rounded-full flex items-center justify-center text-mist text-xs font-bold flex-shrink-0">
                     {i + 1}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="font-bold text-slate-900">{v.title}</p>
-                    {v.description && <p className="text-slate-500 text-sm mt-0.5">{v.description}</p>}
-                    <p className="text-xs text-slate-400 mt-1">{v.fileName} · {formatSize(v.fileSize)}</p>
+                    <p className="font-bold text-ink">{v.title}</p>
+                    {v.description && <p className="text-mist text-sm mt-0.5">{v.description}</p>}
+                    <p className="text-xs text-fog mt-1">{v.fileName} · {formatSize(v.fileSize)}</p>
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
-                    <a href={v.blobUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-50">
+                    <a href={v.blobUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-hairline text-mist hover:bg-abyss">
                       Preview
                     </a>
                     <button
                       onClick={() => { setEditingId(v.id); setEditForm({ title: v.title, description: v.description ?? "", sortOrder: v.sortOrder }); }}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-50"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-hairline text-mist hover:bg-abyss"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => setDeleteId(v.id)}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-red-200 text-red-600 hover:bg-red-50"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10"
                     >
                       Delete
                     </button>
