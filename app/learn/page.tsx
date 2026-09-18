@@ -17,6 +17,12 @@ export default async function LearnPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  console.log("[LEARN_LIST]", JSON.stringify({
+    studentId,
+    courseCount: enrollments.length,
+    courses: enrollments.map((e) => ({ courseId: e.courseId, videoCount: e.course._count.videos })),
+  }));
+
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-8">

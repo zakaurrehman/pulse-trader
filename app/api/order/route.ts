@@ -28,11 +28,22 @@ export async function POST(req: NextRequest) {
       phone: phone?.trim() || null,
       country: country?.trim() || null,
       service,
+      // Bind to the course by ID, not just the name snapshot in `service` —
+      // if the course is later renamed, confirmation must still resolve the
+      // right course instead of silently failing a name-string match.
+      courseId: found.id,
       amount: found.price,
       referralCode: referralCode?.trim() || null,
       paymentNote: paymentNote?.trim() || null,
     },
   });
+
+  console.log("[ORDER_CREATE]", JSON.stringify({
+    paymentId: request.id,
+    clientEmail: request.clientEmail,
+    courseId: found.id,
+    service,
+  }));
 
   return NextResponse.json({ success: true, id: request.id });
 }

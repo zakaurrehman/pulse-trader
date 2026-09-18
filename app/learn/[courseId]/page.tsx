@@ -1,6 +1,7 @@
 ﻿import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { getEnrolledCourseWithVideos, type CourseAccessDb } from "@/lib/courseAccess";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import VideoPlayer from "@/components/VideoPlayer";
@@ -17,17 +18,25 @@ export default async function CoursePlayerPage({
   const session = await getServerSession(authOptions);
   const studentId = session!.user.id;
 
-  // Verify student is enrolled
-  const enrollment = await prisma.enrollment.findUnique({
-    where: { studentId_courseId: { studentId, courseId } },
-  });
-  if (!enrollment) redirect("/learn");
+  // Access is course-level: one Enrollment row grants all of that course's
+  // current videos, fetched with no limit/pagination (see lib/courseAccess).
+  const { enrolled, course } = await getEnrolledCourseWithVideos(prisma as unknown as CourseAccessDb, studentId, courseId);
+  if (!enrolled) {
+    console.log("[LEARN_COURSE]", JSON.stringify({ studentId, courseId, result: "no_enrollment" }));
+    redirect("/learn");
+  }
+  if (!course) {
+    console.log("[LEARN_COURSE]", JSON.stringify({ studentId, courseId, result: "course_not_found" }));
+    redirect("/learn");
+  }
 
-  const course = await prisma.course.findUnique({
-    where: { id: courseId },
-    include: { videos: { orderBy: { sortOrder: "asc" } } },
-  });
-  if (!course) redirect("/learn");
+  console.log("[LEARN_COURSE]", JSON.stringify({
+    studentId,
+    courseId,
+    result: "ok",
+    videoCount: course.videos.length,
+    videoIds: course.videos.map((v) => v.id),
+  }));
 
   const activeVideo = course.videos.find((v) => v.id === activeVideoId) ?? course.videos[0] ?? null;
 

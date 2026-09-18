@@ -2,6 +2,27 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import {
+  confirmPaymentRequest,
+  rejectPaymentRequest,
+  reconcileEnrollment,
+  isPaymentEnrolled,
+  PaymentAlreadyProcessedError,
+  InvalidReferralError,
+  PaymentNotFoundError,
+  PaymentNotConfirmedError,
+  type ConfirmationClient,
+  type Logger,
+} from "@/lib/paymentConfirmation";
+
+// Cast is safe: PrismaClient (and the Prisma.TransactionClient passed into
+// its $transaction callback) structurally implements everything
+// ConfirmationClient declares — see lib/paymentConfirmation.ts.
+const db = prisma as unknown as ConfirmationClient;
+
+const log: Logger = (event, data) => {
+  console.log(`[PAYMENT_CONFIRM] ${event}`, JSON.stringify(data));
+};
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -25,10 +46,22 @@ export async function GET() {
     affiliates.map((a) => [a.referralCode!, { fullName: a.fullName, username: a.username }])
   );
 
+  // Surface, per confirmed payment, whether it actually has a matching
+  // enrollment right now — this used to be a one-time snapshot returned
+  // only at confirm time and then forgotten. Making it a live, derived
+  // value lets the admin see and fix a stuck payment instead of the
+  // failure being invisible.
+  const confirmed = requests.filter((r) => r.status === "CONFIRMED");
+  const enrolledMap = new Map<string, boolean>();
+  for (const payment of confirmed) {
+    enrolledMap.set(payment.id, await isPaymentEnrolled(db, payment));
+  }
+
   return NextResponse.json(
     requests.map((r) => ({
       ...r,
       affiliate: r.referralCode ? (affiliateMap[r.referralCode] ?? null) : null,
+      enrolled: r.status === "CONFIRMED" ? (enrolledMap.get(r.id) ?? false) : null,
     }))
   );
 }
@@ -42,83 +75,52 @@ export async function PATCH(req: NextRequest) {
   const body = await req.json();
   const { id, action, rejectedNote } = body;
 
-  if (!id || !["confirm", "reject"].includes(action)) {
+  if (!id || !["confirm", "reject", "retryEnrollment"].includes(action)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const payment = await prisma.paymentRequest.findUnique({ where: { id } });
-  if (!payment) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  if (payment.status !== "PENDING") {
-    return NextResponse.json({ error: "Already actioned" }, { status: 409 });
-  }
+  try {
+    if (action === "reject") {
+      const updated = await rejectPaymentRequest(db, id, rejectedNote?.trim() || null, log);
+      return NextResponse.json(updated);
+    }
 
-  if (action === "reject") {
-    const updated = await prisma.paymentRequest.update({
-      where: { id },
-      data: { status: "REJECTED", rejectedNote: rejectedNote?.trim() || null },
-    });
-    return NextResponse.json(updated);
-  }
+    if (action === "retryEnrollment") {
+      const result = await reconcileEnrollment(db, id, log);
+      return NextResponse.json({
+        payment: result.payment,
+        enrolled: result.enrolled,
+        studentFound: result.studentFound,
+        courseResolved: result.courseResolved,
+      });
+    }
 
-  // Confirm: optionally find affiliate, then create Sale + Commission
-  let affiliateId: string | null = null;
-  if (payment.referralCode) {
-    const affiliate = await prisma.user.findUnique({
-      where: { referralCode: payment.referralCode },
+    // action === "confirm"
+    const result = await confirmPaymentRequest(db, id, log);
+    return NextResponse.json({
+      payment: result.payment,
+      enrolled: result.enrolled,
+      studentFound: result.studentFound,
+      courseResolved: result.courseResolved,
     });
-    if (affiliate && affiliate.status === "APPROVED") {
-      affiliateId = affiliate.id;
-    } else {
+  } catch (err) {
+    if (err instanceof PaymentNotFoundError) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
+    if (err instanceof PaymentAlreadyProcessedError) {
+      return NextResponse.json({ error: "Already actioned" }, { status: 409 });
+    }
+    if (err instanceof InvalidReferralError) {
       return NextResponse.json(
         { error: "Referral code is invalid or affiliate is not approved." },
         { status: 400 }
       );
     }
+    if (err instanceof PaymentNotConfirmedError) {
+      return NextResponse.json({ error: err.message }, { status: 400 });
+    }
+
+    console.error("[PAYMENT_CONFIRM] unhandled_error", { id, action, error: String(err) });
+    return NextResponse.json({ error: "Internal server error." }, { status: 500 });
   }
-
-  // Find the course to create enrollment
-  const course = await prisma.course.findFirst({ where: { name: payment.service } });
-
-  // Find the student account by email
-  const student = await prisma.user.findFirst({
-    where: { email: payment.clientEmail, role: "STUDENT" },
-  });
-
-  const updated = await prisma.$transaction(async (tx) => {
-    // Create sale + commission only if there's an affiliate
-    if (affiliateId) {
-      const s = await tx.sale.create({
-        data: {
-          affiliateId,
-          clientName: payment.clientName,
-          clientEmail: payment.clientEmail,
-          amount: payment.amount,
-          description: payment.service,
-        },
-      });
-      await tx.commission.create({
-        data: { saleId: s.id, affiliateId, amount: payment.amount * 0.5 },
-      });
-    }
-
-    // Auto-enroll student if account + course found
-    if (student && course) {
-      await tx.enrollment.upsert({
-        where: { studentId_courseId: { studentId: student.id, courseId: course.id } },
-        update: {},
-        create: { studentId: student.id, courseId: course.id, paymentRequestId: payment.id },
-      });
-    }
-
-    return tx.paymentRequest.update({
-      where: { id },
-      data: { status: "CONFIRMED" },
-    });
-  });
-
-  return NextResponse.json({
-    payment: updated,
-    enrolled: !!(student && course),
-    studentFound: !!student,
-  });
 }
