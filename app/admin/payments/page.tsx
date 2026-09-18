@@ -15,6 +15,8 @@ type PaymentRequest = {
   rejectedNote: string | null;
   createdAt: string;
   affiliate: { fullName: string; username: string } | null;
+  /** Derived live from Enrollment lookup; null unless status is CONFIRMED. */
+  enrolled: boolean | null;
 };
 
 const STATUS_COLORS = {
@@ -62,6 +64,30 @@ export default function AdminPaymentsPage() {
       load();
     } else {
       showToast(data.error || "Failed to confirm", false);
+    }
+  }
+
+  async function retryEnrollment(id: string) {
+    setActing(id);
+    const res = await fetch("/api/admin/payments", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, action: "retryEnrollment" }),
+    });
+    const data = await res.json();
+    setActing(null);
+    if (res.ok) {
+      showToast(
+        data.enrolled
+          ? "Enrolled successfully — student now has access."
+          : data.studentFound === false
+            ? "Still no student account found for this email."
+            : "Still could not resolve the course for this order.",
+        !!data.enrolled
+      );
+      load();
+    } else {
+      showToast(data.error || "Failed to retry enrollment", false);
     }
   }
 
@@ -205,9 +231,28 @@ export default function AdminPaymentsPage() {
                 </div>
               </div>
 
-              {r.status === "CONFIRMED" && (
+              {r.status === "CONFIRMED" && r.enrolled && (
                 <div className="bg-green-500/10 border border-green-500/30 rounded-xl px-4 py-2 text-green-400 text-sm font-medium">
-                  ✅ Confirmed — Sale & commission logged to affiliate
+                  ✅ Confirmed — student enrolled and has course access
+                </div>
+              )}
+
+              {r.status === "CONFIRMED" && !r.enrolled && (
+                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl px-4 py-3 text-yellow-400 text-sm">
+                  <p className="font-medium">
+                    ⚠ Confirmed, but no course access yet — the student account for {r.clientEmail} wasn&apos;t
+                    found (or the course couldn&apos;t be resolved) when this was confirmed.
+                  </p>
+                  <p className="text-xs text-yellow-400/80 mt-1">
+                    If they&apos;ve since registered with this email, click retry — no need for them to reorder.
+                  </p>
+                  <button
+                    onClick={() => retryEnrollment(r.id)}
+                    disabled={acting === r.id}
+                    className="mt-2 bg-yellow-500/20 hover:bg-yellow-500/30 disabled:opacity-50 text-yellow-300 font-semibold text-xs px-4 py-2 rounded-lg transition-colors"
+                  >
+                    {acting === r.id ? "Retrying…" : "↻ Retry Enrollment"}
+                  </button>
                 </div>
               )}
 

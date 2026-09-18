@@ -17,7 +17,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "All required fields must be filled." }, { status: 400 });
     }
 
-    const existing = await prisma.user.findFirst({ where: { OR: [{ email }, { username }] } });
+    // Normalize the same way orders normalize clientEmail (trim + lowercase).
+    // Without this, a student registering as "John@Gmail.com" never matches
+    // an order placed as "john@gmail.com" during payment confirmation, and
+    // their course enrollment silently never gets created.
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const existing = await prisma.user.findFirst({
+      where: { OR: [{ email: { equals: normalizedEmail, mode: "insensitive" } }, { username }] },
+    });
     if (existing) {
       return NextResponse.json({ error: "Email or username already taken." }, { status: 409 });
     }
@@ -27,7 +35,7 @@ export async function POST(req: NextRequest) {
     await prisma.user.create({
       data: {
         fullName,
-        email,
+        email: normalizedEmail,
         phone,
         city: city || null,
         country,

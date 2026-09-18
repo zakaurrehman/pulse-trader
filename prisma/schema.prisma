@@ -116,6 +116,7 @@ model PaymentRequest {
   phone        String?
   country      String?
   service      String
+  courseId     String?
   amount       Float
   referralCode String?
   paymentNote  String?
@@ -123,6 +124,12 @@ model PaymentRequest {
   rejectedNote String?
   createdAt    DateTime             @default(now())
   updatedAt    DateTime             @updatedAt
+
+  // Nullable + SetNull: this is a historical payment record and must survive
+  // a course being renamed or deleted. `service` (the name at order time) is
+  // kept as a display fallback if `courseId` is ever null (legacy rows
+  // created before this field existed, or the course was later deleted).
+  course Course? @relation(fields: [courseId], references: [id], onDelete: SetNull)
 }
 
 model SignalStat {
@@ -149,8 +156,9 @@ model Course {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  videos      Video[]
-  enrollments Enrollment[]
+  videos          Video[]
+  enrollments     Enrollment[]
+  paymentRequests PaymentRequest[]
 }
 
 model Video {
